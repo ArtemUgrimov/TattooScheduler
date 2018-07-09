@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0CBAE520F3F5F8000A13F5 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */; };
+		AC0CBAE720F3F696000A13F5 /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAE620F3F696000A13F5 /* CalendarVars.swift */; };
 		AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAA20EC06770007905D /* AppDelegate.swift */; };
 		AC8ADEAD20EC06770007905D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAC20EC06770007905D /* ViewController.swift */; };
 		AC8ADEB020EC06770007905D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8ADEAE20EC06770007905D /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC0CBAE620F3F696000A13F5 /* CalendarVars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
 		AC8ADEA720EC06770007905D /* TattooScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TattooScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8ADEAA20EC06770007905D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8ADEAC20EC06770007905D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,14 +58,24 @@
 		AC8ADEA920EC06770007905D /* TattooScheduler */ = {
 			isa = PBXGroup;
 			children = (
-				AC8ADEAA20EC06770007905D /* AppDelegate.swift */,
-				AC8ADEAC20EC06770007905D /* ViewController.swift */,
+				AC8ADEBC20EC06870007905D /* src */,
 				AC8ADEAE20EC06770007905D /* Main.storyboard */,
 				AC8ADEB120EC06780007905D /* Assets.xcassets */,
 				AC8ADEB320EC06780007905D /* LaunchScreen.storyboard */,
 				AC8ADEB620EC06780007905D /* Info.plist */,
 			);
 			path = TattooScheduler;
+			sourceTree = "<group>";
+		};
+		AC8ADEBC20EC06870007905D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				AC8ADEAA20EC06770007905D /* AppDelegate.swift */,
+				AC8ADEAC20EC06770007905D /* ViewController.swift */,
+				AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */,
+				AC0CBAE620F3F696000A13F5 /* CalendarVars.swift */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +150,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8ADEAD20EC06770007905D /* ViewController.swift in Sources */,
+				AC0CBAE520F3F5F8000A13F5 /* DateCollectionViewCell.swift in Sources */,
 				AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */,
+				AC0CBAE720F3F696000A13F5 /* CalendarVars.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

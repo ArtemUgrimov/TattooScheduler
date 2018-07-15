@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "ViewController.Next(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "NextViewController.viewDidLoad():NextViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "parent">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;select * from events where date = \(dateFormatter.string(from: date))&quot;">
+            </PersistentString>
+            <PersistentString
+               value = "String(cString: sqlite3_column_text(statement, 1))">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.Back(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EventEditViewController.saveEvent(_:):EventEditViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "saveDateFormatter.timeZone">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.collectionView(_:cellForItemAt:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "numberOfEmptyBox">
+            </PersistentString>
+            <PersistentString
+               value = "(month + 12) % 12">
+            </PersistentString>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+            <PersistentString
+               value = "day">
+            </PersistentString>
+            <PersistentString
+               value = "month">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.getStartDateDayPosition():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.calendar.minimumDaysInFirstWeek">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "weekday">
+            </PersistentString>
+            <PersistentString
+               value = "calendar.">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

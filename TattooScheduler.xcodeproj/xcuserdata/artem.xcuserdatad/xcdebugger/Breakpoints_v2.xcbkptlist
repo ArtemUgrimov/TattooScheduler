@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TattooScheduler/src/data/SQLiteStorage.swift"
-            timestampString = "553360952.3049591"
+            timestampString = "553379897.2500319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "store(event:)"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "remove(event:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "TattooScheduler/src/EventEditViewController.swift"
-            timestampString = "553360952.319679"
+            filePath = "TattooScheduler/src/views/NibView.swift"
+            timestampString = "554544589.850576"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "saveEvent(_:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "xibSetup()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

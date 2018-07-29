@@ -3,37 +3,10 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ViewController.Next(_:):ViewController.swift">
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "NextViewController.viewDidLoad():NextViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "parent">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "&quot;select * from events where date = \(dateFormatter.string(from: date))&quot;">
-            </PersistentString>
-            <PersistentString
-               value = "String(cString: sqlite3_column_text(statement, 1))">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.Back(_:):ViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "EventEditViewController.saveEvent(_:):EventEditViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "saveDateFormatter.timeZone">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "SQLiteStorage.remove(event:):SQLiteStorage.swift">
       </ContextState>
       <ContextState
          contextName = "ViewController.collectionView(_:cellForItemAt:):ViewController.swift">
@@ -56,16 +29,62 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
+         contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "&quot;select * from events where date = \(dateFormatter.string(from: date))&quot;">
+            </PersistentString>
+            <PersistentString
+               value = "String(cString: sqlite3_column_text(statement, 1))">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         contextName = "ViewController.Next(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.Back(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UIView.loadNib():NibView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "picker">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ViewController.getStartDateDayPosition():ViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.calendar.minimumDaysInFirstWeek">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventListItem.viewDidLoad():EventListItem.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EventViewController.fillScrollView():EventViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "EventListItem.instanceFromNib()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static EventListItem.loadFromNib():EventListItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "nib.instantiate(withOwner: self, options: nil)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "NextViewController.viewDidLoad():NextViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "parent">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -79,6 +98,9 @@
                value = "calendar.">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -45,6 +45,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         for (index, label) in WeekdayStackView.arrangedSubviews.enumerated() {
             (label as! UILabel).text = calendar.shortWeekdaySymbols[(index + 1) % 7]
         }
+        CalendarView.layer.cornerRadius = 10
     }
     
     func getStartDateDayPosition() {

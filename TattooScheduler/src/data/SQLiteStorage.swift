@@ -71,6 +71,7 @@ class SQLiteStorage: Storage {
                 let decoder = JSONDecoder()
                 decoder.dateDecodingStrategy = .iso8601
                 let event = try! decoder.decode(CalendarEvent.self, from: eventData)
+                event.id = Int(id)
                 self.events.append(event)
                 
                 print("name = \(name)")
@@ -117,6 +118,9 @@ class SQLiteStorage: Storage {
             print("INSERT OK!")
         }
         
+        ev.id = Int(sqlite3_last_insert_rowid(statement))
+        events.append(ev)
+        
         if sqlite3_finalize(statement) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error finalizing prepared statement: \(errmsg)")
@@ -126,11 +130,77 @@ class SQLiteStorage: Storage {
     }
     
     func update(event ev: CalendarEvent) {
-        //
+        var statement: OpaquePointer?
+        if sqlite3_prepare_v2(db, "update events set date=(?), data=(?) where id=(?)", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing update: \(errmsg)")
+        }
+        
+        if sqlite3_bind_text(statement, 1, dateFormatter.string(from: ev.date!), -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding: \(errmsg)")
+        }
+        
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        encoder.dateEncodingStrategy = .iso8601
+        let data = try! encoder.encode(ev)
+        let json = String(data: data, encoding: .utf8)!
+        
+        if sqlite3_bind_text(statement, 2, json, -1, SQLITE_TRANSIENT) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding: \(errmsg)")
+        }
+        
+        if sqlite3_bind_int(statement, 3, Int32(ev.id)) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding: \(errmsg)")
+        }
+        
+        if sqlite3_step(statement) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure updating: \(errmsg)")
+        } else {
+            print("UPDATE OK!")
+        }
+        
+        events.append(ev)
+        
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+        
+        statement = nil
     }
     
     func remove(event ev: CalendarEvent) {
-        //
+        var statement: OpaquePointer?
+        if sqlite3_prepare_v2(db, "delete from events where id=(?)", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert: \(errmsg)")
+        }
+        
+        if sqlite3_bind_int(statement, 1, Int32(ev.id)) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure binding foo: \(errmsg)")
+        }
+        
+        if sqlite3_step(statement) != SQLITE_DONE {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("failure deleting : \(errmsg)")
+        } else {
+            print("DELETE OK!")
+        }
+        
+        events = events.filter {$0.id == ev.id}
+        
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+        
+        statement = nil
     }
     
     public func getEvents(for date: Date)->[CalendarEvent] {

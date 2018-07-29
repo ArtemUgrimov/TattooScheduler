@@ -9,6 +9,7 @@
 import UIKit
 
 class CalendarEvent: Codable {
+    public var id:Int = 0
     public var date:Date?
     
     struct Properties: Codable {

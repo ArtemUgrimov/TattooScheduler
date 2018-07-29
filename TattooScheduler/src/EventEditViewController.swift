@@ -8,8 +8,13 @@
 
 import UIKit
 
-class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+enum OpenMode {
+    case Add
+    case Edit
+}
 
+class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
     enum EventType: String {
         case Tattoo
         case Training
@@ -22,10 +27,14 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var eventTimeTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    var openMode: OpenMode = OpenMode.Add
+    var editingEvent: CalendarEvent?
+    
     private var eventTypePicker: UIPickerView?
     private var eventTimePicker: UIDatePicker?
     
     var vc: ViewController?
+    var evc: EventViewController?
     
     let timeFormatter = DateFormatter()
     let saveDateFormatter = DateFormatter()
@@ -52,6 +61,8 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         timeFormatter.dateFormat = "HH:mm"
         saveDateFormatter.dateFormat = "dd MM yyyy HH:mm"
         saveDateFormatter.locale = Calendar.current.locale
+        
+        fillFromEvent()
     }
     
     @IBAction func saveEvent(_ sender: Any) {
@@ -60,13 +71,24 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             return
         }
         
-        let event: CalendarEvent = CalendarEvent()
-        event.date = saveDateFormatter.date(from: "\(titleBar.title!) \(eventTimeTextField.text!)")
-        event.properties.eventType = eventTypeTextField.text!
-        event.properties.description = descriptionTextField.text!
-        vc?.storage.store(event: event)
+        let event: CalendarEvent?
+            
+        if openMode == OpenMode.Add {
+            event = CalendarEvent()
+        } else {
+            event = editingEvent
+        }
+        event!.date = saveDateFormatter.date(from: "\(titleBar.title!) \(eventTimeTextField.text!)")
+        event!.properties.eventType = eventTypeTextField.text!
+        event!.properties.description = descriptionTextField.text!
         
+        if openMode == OpenMode.Add {
+            vc?.storage.store(event: event!)
+        } else {
+            vc?.storage.update(event: event!)
+        }
         self.navigationController?.popViewController(animated: true)
+        evc?.addEventToList()
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -87,6 +109,22 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @objc func dateChanged(eventTimePicker: UIDatePicker) {
         eventTimeTextField.text = timeFormatter.string(from: eventTimePicker.date)
+    }
+    
+    @IBAction func deleteEvent(_ sender: Any) {
+        if editingEvent != nil {
+            vc?.storage.remove(event: editingEvent!)
+            self.navigationController?.popViewController(animated: true)
+            evc?.fillScrollView()
+        }
+    }
+    
+    private func fillFromEvent() {
+        if editingEvent != nil {
+            eventTypeTextField.text = editingEvent?.properties.eventType
+            eventTimeTextField.text = timeFormatter.string(from: (editingEvent?.date)!)
+            descriptionTextField.text = editingEvent?.properties.description
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		AC00766F20FB30E600603B0D /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00766E20FB30E600603B0D /* EventEditViewController.swift */; };
-		AC00767320FBA03100603B0D /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00767220FBA03100603B0D /* EventListItem.swift */; };
-		AC00767520FBA06500603B0D /* EventListItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC00767420FBA06500603B0D /* EventListItemView.xib */; };
 		AC0CBAE520F3F5F8000A13F5 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */; };
 		AC0CBAE920F53B7A000A13F5 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAE820F53B79000A13F5 /* EventViewController.swift */; };
 		AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAED20F55134000A13F5 /* Storage.swift */; };
 		AC0CBAF020F55278000A13F5 /* SQLiteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAEF20F55278000A13F5 /* SQLiteStorage.swift */; };
 		AC0CBAF220F552E3000A13F5 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAF120F552E3000A13F5 /* CalendarEvent.swift */; };
+		AC2C8B01210C61A000E1D487 /* ScrollingStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C8B00210C619F00E1D487 /* ScrollingStackViewController.swift */; };
+		AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C8B04210C8DC600E1D487 /* EventListItem.swift */; };
+		AC2C8B07210D979100E1D487 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C8B06210D979000E1D487 /* NibView.swift */; };
+		AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2C8B08210D980F00E1D487 /* EventListItem.xib */; };
 		AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAA20EC06770007905D /* AppDelegate.swift */; };
 		AC8ADEAD20EC06770007905D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAC20EC06770007905D /* ViewController.swift */; };
 		AC8ADEB020EC06770007905D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8ADEAE20EC06770007905D /* Main.storyboard */; };
@@ -24,13 +26,15 @@
 
 /* Begin PBXFileReference section */
 		AC00766E20FB30E600603B0D /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
-		AC00767220FBA03100603B0D /* EventListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListItem.swift; sourceTree = "<group>"; };
-		AC00767420FBA06500603B0D /* EventListItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListItemView.xib; sourceTree = "<group>"; };
 		AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC0CBAE820F53B79000A13F5 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		AC0CBAED20F55134000A13F5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		AC0CBAEF20F55278000A13F5 /* SQLiteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStorage.swift; sourceTree = "<group>"; };
 		AC0CBAF120F552E3000A13F5 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		AC2C8B00210C619F00E1D487 /* ScrollingStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollingStackViewController.swift; sourceTree = "<group>"; };
+		AC2C8B04210C8DC600E1D487 /* EventListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListItem.swift; sourceTree = "<group>"; };
+		AC2C8B06210D979000E1D487 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		AC2C8B08210D980F00E1D487 /* EventListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListItem.xib; sourceTree = "<group>"; };
 		AC8ADEA720EC06770007905D /* TattooScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TattooScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8ADEAA20EC06770007905D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8ADEAC20EC06770007905D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,8 +58,10 @@
 		AC00767020FBA00200603B0D /* views */ = {
 			isa = PBXGroup;
 			children = (
-				AC00767220FBA03100603B0D /* EventListItem.swift */,
-				AC00767420FBA06500603B0D /* EventListItemView.xib */,
+				AC2C8B00210C619F00E1D487 /* ScrollingStackViewController.swift */,
+				AC2C8B04210C8DC600E1D487 /* EventListItem.swift */,
+				AC2C8B06210D979000E1D487 /* NibView.swift */,
+				AC2C8B08210D980F00E1D487 /* EventListItem.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -172,7 +178,7 @@
 			files = (
 				AC8ADEB520EC06780007905D /* LaunchScreen.storyboard in Resources */,
 				AC8ADEB220EC06780007905D /* Assets.xcassets in Resources */,
-				AC00767520FBA06500603B0D /* EventListItemView.xib in Resources */,
+				AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */,
 				AC8ADEB020EC06770007905D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,10 +195,12 @@
 				AC0CBAE520F3F5F8000A13F5 /* DateCollectionViewCell.swift in Sources */,
 				AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */,
 				AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */,
+				AC2C8B07210D979100E1D487 /* NibView.swift in Sources */,
+				AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */,
+				AC2C8B01210C61A000E1D487 /* ScrollingStackViewController.swift in Sources */,
 				AC0CBAF020F55278000A13F5 /* SQLiteStorage.swift in Sources */,
 				AC0CBAF220F552E3000A13F5 /* CalendarEvent.swift in Sources */,
 				AC00766F20FB30E600603B0D /* EventEditViewController.swift in Sources */,
-				AC00767320FBA03100603B0D /* EventListItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

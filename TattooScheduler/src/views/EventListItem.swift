@@ -2,39 +2,32 @@
 //  EventListItem.swift
 //  TattooScheduler
 //
-//  Created by Artem on 15.07.2018.
+//  Created by Artem on 28.07.2018.
 //  Copyright © 2018 Artem. All rights reserved.
 //
 
 import UIKit
 
-class EventListItem: UIView {
-
-    let nibName = "EventListItem"
-    var view : UIView!
+class EventListItem: NibView {
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        xibSetUp()
+    var event: CalendarEvent?
+    var controller: EventViewController?
+    
+    var eventType: String = String()
+    var eventTime: String = String()
+    var desc: String = String()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+//        eventTypeText.text = eventType
+//        eventTimeText.text = eventTime
+//        descText.text = desc
+        
+        view.layer.cornerRadius = 20
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        xibSetUp()
+    class func instanceFromNib() -> UIView {
+        return UINib(nibName: "EventListItem", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! UIView
     }
-    
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        return view
-    }
-    
-    func xibSetUp() {
-        view = loadViewFromNib()
-        view.frame = self.bounds
-        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-        addSubview(view)
-    }
-
 }

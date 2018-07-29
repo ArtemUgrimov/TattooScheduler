@@ -3,7 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
       </ContextState>
       <ContextState
          contextName = "SQLiteStorage.remove(event:):SQLiteStorage.swift">
@@ -37,6 +37,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MonthView.getStartDateDayPosition():MonthView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "date">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
          <PersistentStrings>
             <PersistentString
@@ -66,6 +74,14 @@
          <PersistentStrings>
             <PersistentString
                value = "self.calendar.minimumDaysInFirstWeek">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.getMonthHeigth(by:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "range.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -108,7 +124,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

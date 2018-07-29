@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MonthView" customModule="TattooScheduler" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="42e-Rn-rwQ" id="BMq-uZ-hcN"/>
+                <outlet property="monthLabel" destination="nnj-36-pp3" id="fdX-LT-sih"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="498"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="42e-Rn-rwQ" userLabel="Calendar">
+                    <rect key="frame" x="0.0" y="40" width="359" height="359"/>
+                    <color key="backgroundColor" red="1" green="0.43339038954310594" blue="0.35163462473677864" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="42e-Rn-rwQ" secondAttribute="height" multiplier="1:1" id="bRp-MA-FAI"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="WWM-kA-hmN">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ba0-xb-1Xr"/>
+                        <outlet property="delegate" destination="-1" id="7Qd-AS-VGT"/>
+                    </connections>
+                </collectionView>
+                <label verifyAmbiguity="off" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nnj-36-pp3">
+                    <rect key="frame" x="144.5" y="0.0" width="70" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="42e-Rn-rwQ" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="5ho-6f-Ehh"/>
+                <constraint firstItem="nnj-36-pp3" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="KZZ-eh-ODt"/>
+                <constraint firstItem="42e-Rn-rwQ" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="Mce-c4-kgI"/>
+                <constraint firstItem="42e-Rn-rwQ" firstAttribute="top" secondItem="nnj-36-pp3" secondAttribute="bottom" constant="10" id="P91-5c-boT"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="nnj-36-pp3" secondAttribute="top" constant="20" id="bDU-S0-qYq"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="19.5" y="-46"/>
+        </view>
+    </objects>
+</document>

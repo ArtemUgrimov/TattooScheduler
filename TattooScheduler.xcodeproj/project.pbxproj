@@ -8,38 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		AC00766F20FB30E600603B0D /* EventEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC00766E20FB30E600603B0D /* EventEditViewController.swift */; };
-		AC0CBAE520F3F5F8000A13F5 /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */; };
 		AC0CBAE920F53B7A000A13F5 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAE820F53B79000A13F5 /* EventViewController.swift */; };
 		AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAED20F55134000A13F5 /* Storage.swift */; };
 		AC0CBAF020F55278000A13F5 /* SQLiteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAEF20F55278000A13F5 /* SQLiteStorage.swift */; };
 		AC0CBAF220F552E3000A13F5 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAF120F552E3000A13F5 /* CalendarEvent.swift */; };
+		AC1FDDFF210E09A8007D4915 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */; };
+		AC1FDE00210E09A8007D4915 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FDDFE210E09A8007D4915 /* CollectionViewCell.xib */; };
 		AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C8B04210C8DC600E1D487 /* EventListItem.swift */; };
 		AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2C8B08210D980F00E1D487 /* EventListItem.xib */; };
 		AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAA20EC06770007905D /* AppDelegate.swift */; };
-		AC8ADEAD20EC06770007905D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAC20EC06770007905D /* ViewController.swift */; };
+		AC8ADEAD20EC06770007905D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAC20EC06770007905D /* MainViewController.swift */; };
 		AC8ADEB020EC06770007905D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8ADEAE20EC06770007905D /* Main.storyboard */; };
 		AC8ADEB220EC06780007905D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC8ADEB120EC06780007905D /* Assets.xcassets */; };
 		AC8ADEB520EC06780007905D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8ADEB320EC06780007905D /* LaunchScreen.storyboard */; };
 		AC9F69A2210DDD1900FEA704 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F69A1210DDD1900FEA704 /* Indicator.swift */; };
+		AC9F69A4210DF49C00FEA704 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F69A3210DF49C00FEA704 /* MonthView.swift */; };
+		AC9F69A6210DF50A00FEA704 /* MonthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9F69A5210DF50A00FEA704 /* MonthView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC00766E20FB30E600603B0D /* EventEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewController.swift; sourceTree = "<group>"; };
-		AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC0CBAE820F53B79000A13F5 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		AC0CBAED20F55134000A13F5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		AC0CBAEF20F55278000A13F5 /* SQLiteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStorage.swift; sourceTree = "<group>"; };
 		AC0CBAF120F552E3000A13F5 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		AC1FDDFE210E09A8007D4915 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		AC2C8B04210C8DC600E1D487 /* EventListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListItem.swift; sourceTree = "<group>"; };
 		AC2C8B08210D980F00E1D487 /* EventListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListItem.xib; sourceTree = "<group>"; };
 		AC8ADEA720EC06770007905D /* TattooScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TattooScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8ADEAA20EC06770007905D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC8ADEAC20EC06770007905D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AC8ADEAC20EC06770007905D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AC8ADEAF20EC06770007905D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC8ADEB120EC06780007905D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC8ADEB420EC06780007905D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC8ADEB620EC06780007905D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC9F69A1210DDD1900FEA704 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		AC9F69A3210DF49C00FEA704 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
+		AC9F69A5210DF50A00FEA704 /* MonthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +62,13 @@
 		AC00767020FBA00200603B0D /* views */ = {
 			isa = PBXGroup;
 			children = (
-				AC0CBAE420F3F5F8000A13F5 /* DateCollectionViewCell.swift */,
 				AC2C8B04210C8DC600E1D487 /* EventListItem.swift */,
 				AC2C8B08210D980F00E1D487 /* EventListItem.xib */,
 				AC9F69A1210DDD1900FEA704 /* Indicator.swift */,
+				AC9F69A3210DF49C00FEA704 /* MonthView.swift */,
+				AC9F69A5210DF50A00FEA704 /* MonthView.xib */,
+				AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */,
+				AC1FDDFE210E09A8007D4915 /* CollectionViewCell.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -106,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8ADEAA20EC06770007905D /* AppDelegate.swift */,
-				AC8ADEAC20EC06770007905D /* ViewController.swift */,
+				AC8ADEAC20EC06770007905D /* MainViewController.swift */,
 				AC0CBAE820F53B79000A13F5 /* EventViewController.swift */,
 				AC00766E20FB30E600603B0D /* EventEditViewController.swift */,
 				AC0CBAF320F55544000A13F5 /* data */,
@@ -174,6 +183,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8ADEB520EC06780007905D /* LaunchScreen.storyboard in Resources */,
+				AC1FDE00210E09A8007D4915 /* CollectionViewCell.xib in Resources */,
+				AC9F69A6210DF50A00FEA704 /* MonthView.xib in Resources */,
 				AC8ADEB220EC06780007905D /* Assets.xcassets in Resources */,
 				AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */,
 				AC8ADEB020EC06770007905D /* Main.storyboard in Resources */,
@@ -187,9 +198,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC8ADEAD20EC06770007905D /* ViewController.swift in Sources */,
+				AC9F69A4210DF49C00FEA704 /* MonthView.swift in Sources */,
+				AC8ADEAD20EC06770007905D /* MainViewController.swift in Sources */,
+				AC1FDDFF210E09A8007D4915 /* CollectionViewCell.swift in Sources */,
 				AC0CBAE920F53B7A000A13F5 /* EventViewController.swift in Sources */,
-				AC0CBAE520F3F5F8000A13F5 /* DateCollectionViewCell.swift in Sources */,
 				AC9F69A2210DDD1900FEA704 /* Indicator.swift in Sources */,
 				AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */,
 				AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */,

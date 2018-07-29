@@ -10,7 +10,7 @@ import UIKit
 
 class EventViewController: UIViewController {
 
-    var vc: ViewController? = nil
+    var vc: MainViewController? = nil
     
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var scrollView: UIScrollView!

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCell" id="gTV-IL-0wX" customClass="CollectionViewCell" customModule="TattooScheduler" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="44" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="44" height="60"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ww-zg-v5Q" userLabel="DateLabel">
+                        <rect key="frame" x="0.0" y="10" width="44" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leg-BH-OJc">
+                        <rect key="frame" x="0.0" y="0.0" width="44" height="2"/>
+                        <color key="backgroundColor" red="0.84974093264248707" green="0.84974093264248707" blue="0.84974093264248707" alpha="0.72535211267605637" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="2" id="dhf-aa-uEJ"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mp5-GX-hlg" userLabel="Indicator" customClass="Indicator" customModule="TattooScheduler" customModuleProvider="target">
+                        <rect key="frame" x="20" y="37" width="5" height="5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="5" id="FzG-TA-Vdn"/>
+                            <constraint firstAttribute="height" constant="5" id="Xiq-WG-66N"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Mp5-GX-hlg" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Btp-Ry-sDx"/>
+                <constraint firstItem="0Ww-zg-v5Q" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="11:15" id="Oy9-8N-ARw"/>
+                <constraint firstItem="0Ww-zg-v5Q" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="Su9-mb-GEy"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="leg-BH-OJc" secondAttribute="bottom" constant="-2" id="WdV-Eh-VVA"/>
+                <constraint firstItem="leg-BH-OJc" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" id="hUs-Gx-nJ8"/>
+                <constraint firstItem="leg-BH-OJc" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="trailing" constant="-44" id="hWK-9f-50I"/>
+                <constraint firstItem="Mp5-GX-hlg" firstAttribute="top" secondItem="0Ww-zg-v5Q" secondAttribute="bottom" constant="3" id="rV3-lk-TUs"/>
+                <constraint firstItem="0Ww-zg-v5Q" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" constant="10" id="w1t-q4-09E"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="44" height="60"/>
+            <connections>
+                <outlet property="dateLabel" destination="0Ww-zg-v5Q" id="eOt-CG-uUI"/>
+                <outlet property="indicator" destination="Mp5-GX-hlg" id="q0U-sF-GX0"/>
+            </connections>
+            <point key="canvasLocation" x="30" y="72"/>
+        </collectionViewCell>
+    </objects>
+</document>

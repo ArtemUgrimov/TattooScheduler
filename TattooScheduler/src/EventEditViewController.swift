@@ -36,7 +36,7 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     private var eventTypePicker: UIPickerView?
     private var eventTimePicker: UIDatePicker?
     
-    var vc: ViewController?
+    var vc: MainViewController?
     var evc: EventViewController?
     
     let timeFormatter = DateFormatter()

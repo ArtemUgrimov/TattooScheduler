@@ -164,7 +164,7 @@ class SQLiteStorage: Storage {
             print("UPDATE OK!")
         }
         
-        events.append(ev)
+        //events.append(ev)
         
         if sqlite3_finalize(statement) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -193,7 +193,7 @@ class SQLiteStorage: Storage {
             print("DELETE OK!")
         }
         
-        events = events.filter {$0.id == ev.id}
+        events = events.filter {$0.id != ev.id}
         
         if sqlite3_finalize(statement) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)

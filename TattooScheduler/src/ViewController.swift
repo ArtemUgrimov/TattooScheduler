@@ -114,7 +114,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let thisYear = year == calendar.component(.year, from: date)
         
         let today = thisMonth && thisYear && indexPath.row + 1 - numberOfEmptyBox == day
-        let selected = selectedDay > 0 && indexPath.row + 1 - numberOfEmptyBox == selectedDay
         
         if Int(cell.DateLabel.text!)! < 1 {
             cell.DateLabel.text = "\(DaysInMonths[(month == 0 ? 12 : month) - 1] + indexPath.row + 1 - numberOfEmptyBox)"
@@ -130,12 +129,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
         
-        if selected {
-            cell.backgroundColor = #colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1)
-        } else if today {
-            cell.backgroundColor = #colorLiteral(red: 1, green: 0.02328635045, blue: 0, alpha: 1)
+        if today {
+            cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         } else {
             cell.backgroundColor = .clear
+        }
+        
+        let components = DateComponents(year: year, month: month + 1, day: Int(cell.DateLabel.text!))
+        let cellDate = calendar.date(from: components)!
+        
+        if thisMonth {
+            let events = storage.getEvents(for: cellDate)
+            cell.turnIndicator(withValue: !events.isEmpty)
         }
         
         return cell

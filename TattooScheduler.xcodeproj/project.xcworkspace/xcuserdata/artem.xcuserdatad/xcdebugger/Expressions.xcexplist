@@ -29,6 +29,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "static UIView.loadFromNib&lt;A&gt;():NibView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "type(of: self)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
          <PersistentStrings>
             <PersistentString

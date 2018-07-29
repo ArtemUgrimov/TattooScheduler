@@ -10,7 +10,13 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventListItem" customModule="TattooScheduler" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventListItem" customModule="TattooScheduler" customModuleProvider="target">
+            <connections>
+                <outlet property="descLabel" destination="gqo-nT-3EH" id="rSW-7J-tbk"/>
+                <outlet property="eventTimeLabel" destination="Cpl-hG-sLO" id="BxW-JL-IQF"/>
+                <outlet property="eventTypeLabel" destination="WpX-M6-cC5" id="IR8-3Y-YS1"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" restorationIdentifier="EventListItem" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="348" height="148"/>
@@ -40,14 +46,23 @@
                     </subviews>
                 </stackView>
             </subviews>
-            <color key="backgroundColor" red="0.95854922279792742" green="0.95854922279792742" blue="0.95854922279792742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.85492227979274604" green="0.85492227979274604" blue="0.85492227979274604" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="4tE-K7-icg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="a5c-AI-fLt"/>
                 <constraint firstItem="4tE-K7-icg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="20" id="dlU-KL-3Vl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="1n7-aG-hGW" appends="YES" id="64L-g0-6hJ"/>
+            </connections>
             <point key="canvasLocation" x="19" y="-193"/>
         </view>
+        <tapGestureRecognizer id="1n7-aG-hGW">
+            <connections>
+                <action selector="onTap:" destination="-1" id="BeL-7I-Pwv"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

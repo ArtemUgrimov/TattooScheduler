@@ -13,9 +13,7 @@ class EventViewController: UIViewController {
     var vc: ViewController? = nil
     
     @IBOutlet weak var titleBar: UINavigationItem!
-    @IBOutlet weak var eventsStack: UIStackView!
-    
-    let listItem = EventListItem.instanceFromNib()
+    @IBOutlet weak var scrollView: UIScrollView!
     
     let timeFormatter = DateFormatter()
     let dateFormatter = DateFormatter()
@@ -35,38 +33,44 @@ class EventViewController: UIViewController {
     }
     
     private func add(listItem li: UIView) {
-        eventsStack.addArrangedSubview(li)
+        scrollView.addSubview(li)
     }
     
     private func remove(listItem li: UIView) {
-        eventsStack.removeArrangedSubview(li)
+        scrollView.addSubview(li)
     }
     
     func fillScrollView() {
+        for sub in scrollView.subviews {
+            sub.removeFromSuperview()
+        }
         
         var events = vc?.storage.getEvents(for: dateFormatter.date(from: vc!.selectedDate)!)
         events = events?.sorted(by: { $0.date! < $1.date! })
+        var offset = (x: 8, y: 8, width: Int(scrollView.bounds.width - 16), height: 140)
+        let spacing = 8
+        
         for event in events! {
-            let listItem = EventListItem.instanceFromNib() as! EventListItem
+            let listItem = createListItem(offset)
             initListItem(listItem, event)
             controllers.append(listItem)
             add(listItem: listItem)
+            offset.y += offset.height + spacing
         }
+        scrollView.contentSize = CGSize(width: offset.width, height: offset.y)
+    }
+    
+    private func createListItem(_ offset: (Int, Int, Int, Int)) -> EventListItem {
+        let item = EventListItem(frame: CGRect(x: offset.0, y: offset.1, width: offset.2, height: offset.3))
+        return item
     }
     
     func addEventToList() {
-        var events = vc?.storage.getEvents(for: dateFormatter.date(from: vc!.selectedDate)!)
-        events = events?.sorted(by: { $0.date! < $1.date! })
-        
-        let listItem = EventListItem.instanceFromNib() as! EventListItem
-        initListItem(listItem, (events?.last)!)
-        controllers.append(listItem)
-        add(listItem: listItem)
+        fillScrollView()
     }
     
     func removeLastEvent() {
-        remove(listItem: controllers.last!)
-        controllers.removeLast()
+        fillScrollView()
     }
     
     @IBAction func AddEvent(_ sender: Any) {
@@ -101,5 +105,7 @@ class EventViewController: UIViewController {
         listItem.desc = event.properties.description
         listItem.event = event
         listItem.controller = self
+        
+        listItem.updateText()
     }
 }

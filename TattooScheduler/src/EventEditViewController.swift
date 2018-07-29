@@ -18,8 +18,11 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     enum EventType: String {
         case Tattoo
         case Training
+        case Massage
+        case Consult
+        case Other
         
-        static let allValues = [ Tattoo, Training ]
+        static let allValues = [ Tattoo, Training, Massage, Consult, Other ]
     }
     
     @IBOutlet weak var titleBar: UINavigationItem!
@@ -88,7 +91,7 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             vc?.storage.update(event: event!)
         }
         self.navigationController?.popViewController(animated: true)
-        evc?.addEventToList()
+        evc?.fillScrollView()
     }
     
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -132,7 +135,7 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 2
+        return EventType.allValues.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

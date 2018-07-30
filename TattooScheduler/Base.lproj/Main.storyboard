@@ -83,6 +83,9 @@
                             </stackView>
                             <scrollView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMm-SM-cSd">
                                 <rect key="frame" x="0.0" y="156" width="414" height="533"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="arS-xy-uLR"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,9 +100,6 @@
                             <constraint firstItem="aMm-SM-cSd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jzB-dk-7Vq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Bk3-Rf-E2D" appends="YES" id="P6K-73-0qF"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" prompt="prompt" largeTitleDisplayMode="always" id="jfn-sz-zwT">
                         <barButtonItem key="backBarButtonItem" title="Back" id="yFx-vE-ik1"/>
@@ -111,16 +111,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <swipeGestureRecognizer direction="right" id="c4D-eA-5Rl">
-                    <connections>
-                        <action selector="RightSwipe:" destination="BYZ-38-t0r" id="i1E-hJ-ppb"/>
-                    </connections>
-                </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="left" id="Bk3-Rf-E2D">
-                    <connections>
-                        <action selector="LeftSwipe:" destination="BYZ-38-t0r" id="1Fr-sX-z9V"/>
-                    </connections>
-                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1055.072463768116" y="118.20652173913044"/>
         </scene>

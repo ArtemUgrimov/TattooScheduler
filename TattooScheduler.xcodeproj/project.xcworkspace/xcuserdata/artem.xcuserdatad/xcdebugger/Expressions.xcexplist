@@ -89,6 +89,14 @@
          contextName = "EventListItem.viewDidLoad():EventListItem.swift">
       </ContextState>
       <ContextState
+         contextName = "MainViewController.scrollViewDidScroll(_:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "totalMonthsHeight">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "EventViewController.fillScrollView():EventViewController.swift">
          <PersistentStrings>
             <PersistentString

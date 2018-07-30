@@ -24,6 +24,7 @@
 		AC9F69A2210DDD1900FEA704 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F69A1210DDD1900FEA704 /* Indicator.swift */; };
 		AC9F69A4210DF49C00FEA704 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F69A3210DF49C00FEA704 /* MonthView.swift */; };
 		AC9F69A6210DF50A00FEA704 /* MonthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC9F69A5210DF50A00FEA704 /* MonthView.xib */; };
+		ACD08274210E698D0040095D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD08273210E698D0040095D /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		AC9F69A1210DDD1900FEA704 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		AC9F69A3210DF49C00FEA704 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		AC9F69A5210DF50A00FEA704 /* MonthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthView.xib; sourceTree = "<group>"; };
+		ACD08273210E698D0040095D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +122,17 @@
 				AC00766E20FB30E600603B0D /* EventEditViewController.swift */,
 				AC0CBAF320F55544000A13F5 /* data */,
 				AC00767020FBA00200603B0D /* views */,
+				ACD08272210E69450040095D /* utils */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		ACD08272210E69450040095D /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				ACD08273210E698D0040095D /* Extensions.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 				AC9F69A2210DDD1900FEA704 /* Indicator.swift in Sources */,
 				AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */,
 				AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */,
+				ACD08274210E698D0040095D /* Extensions.swift in Sources */,
 				AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */,
 				AC0CBAF020F55278000A13F5 /* SQLiteStorage.swift in Sources */,
 				AC0CBAF220F552E3000A13F5 /* CalendarEvent.swift in Sources */,

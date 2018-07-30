@@ -28,9 +28,22 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
     var month: Int = 0
     var year: Int = 0
     
-    var months: [MonthView] = []
+    var doNotCheckBounds: Bool = false
+    var totalMonthsHeight: CGFloat = 0
+    var lastMonthHeight: CGFloat = 0
+    var months: [MonthView] = [] {
+        didSet {
+            totalMonthsHeight = 0
+            for month in months {
+                totalMonthsHeight += month.height + spacing
+            }
+        }
+    }
     
     var storage:Storage = SQLiteStorage()
+    
+    let topOffset: CGFloat = 30
+    let spacing: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,103 +54,53 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         
         currentMonthName = Months[month]
         NavBar.prompt = "\(currentMonthName) \(year)"
-        updateDaysInFeb()
         
         for (index, label) in WeekdayStackView.arrangedSubviews.enumerated() {
             (label as! UILabel).text = calendar.shortWeekdaySymbols[(index + 1) % 7]
         }
-        
-        let calendarWidth = MonthView.size
-        let calendarHeight = (calendarWidth - 30) / 7 * 6 + 30
-        let leftOffset: CGFloat = 8
-        let topOffset: CGFloat = 30
-        let spacing: CGFloat = 10
 
-        let prevComponents = DateComponents(month: -1, day: -day + 1)
-        let prevDate = calendar.date(byAdding: prevComponents, to: date)!
+        let priorMonth = createMonth(-1, topOffset)
+        let currentMonth = createMonth(0, priorMonth.frame.maxY + spacing)
+        let nextMonth = createMonth(1, currentMonth.frame.maxY + spacing)
         
-        let curComponents = DateComponents(day: -day + 1)
-        let curDate = calendar.date(byAdding: curComponents, to: date)!
-        
-        let nextComponents = DateComponents(month: 1, day: -day + 1)
-        let nextDate = calendar.date(byAdding: nextComponents, to: date)!
-        
-        
-        let priorMonth: MonthView = MonthView(frame: CGRect(x: leftOffset, y: topOffset, width: calendarWidth, height: getMonthHeigth(by: prevDate)))
-        let currentMonth: MonthView = MonthView(frame: CGRect(x: leftOffset, y: priorMonth.frame.maxY + spacing, width: calendarWidth, height: getMonthHeigth(by: curDate)))
-        let nextMonth: MonthView = MonthView(frame: CGRect(x: leftOffset, y: currentMonth.frame.maxY + spacing, width: calendarWidth, height: getMonthHeigth(by: nextDate)))
-        
-        
-        priorMonth.date = prevDate
-        currentMonth.date = curDate
-        nextMonth.date = nextDate
-        
-        scrollView.contentSize = CGSize(width: calendarWidth, height:priorMonth.frame.height + currentMonth.frame.height + nextMonth.frame.height + spacing * 3)
+        scrollView.contentSize = CGSize(width: MonthView.size, height: priorMonth.height + currentMonth.height + nextMonth.height + spacing * 3)
         
         scrollView.addSubview(priorMonth)
         scrollView.addSubview(currentMonth)
         scrollView.addSubview(nextMonth)
         
-        scrollView.setContentOffset(CGPoint(x: 0, y: calendarHeight - spacing), animated: false)
+        scrollView.setContentOffset(CGPoint(x: 0, y: priorMonth.height - spacing), animated: false)
     }
     
-    func createMonth(_ monthOffset: Int, _ y: Int) -> MonthView {
+    func createMonth(_ monthOffset: Int, _ y: CGFloat) -> MonthView {
+        let calendarWidth = MonthView.size
+        let leftOffset: CGFloat = 8
+
+        let prevComponents = DateComponents(month: monthOffset, day: -day + 1)
+        let prevDate = calendar.date(byAdding: prevComponents, to: date)!
         
+        let priorMonth: MonthView = MonthView(frame: CGRect(x: leftOffset, y: y, width: calendarWidth, height: getMonthHeigth(by: prevDate)))
+        priorMonth.date = prevDate
+        months.append(priorMonth)
+        
+        return priorMonth
+    }
+    
+    func appendMonthToList(month: MonthView) {
+        scrollView.contentSize.height = scrollView.contentSize.height + month.height + spacing
+        scrollView.addSubview(month)
     }
     
     func getMonthHeigth(by date: Date) -> CGFloat {
         var emptyDays = Calendar.current.component(.weekday, from: date)
         emptyDays = (emptyDays == 1 ? 7 : emptyDays - 1) - 1
         
-        print("emptyDays = \(emptyDays)")
         let range = calendar.range(of: .day, in: .month, for: date)!
         var numDays = range.count + emptyDays
         numDays += (7 - numDays % 7)
         
         let result = CGFloat(Int(numDays / 7)) * CollectionViewCell.height
         return result
-    }
-    
-    @IBAction func RightSwipe(_ sender: Any) {
-        Back(sender)
-    }
-    
-    @IBAction func LeftSwipe(_ sender: Any) {
-        Next(sender)
-    }
-    
-    func Next(_ sender: Any) {
-        if month == 11 {
-            month = 0
-            year += 1
-        } else {
-            month += 1
-        }
-        updateDataAndView()
-    }
-    
-    func Back(_ sender: Any) {
-        if month == 0 {
-            month = 11
-            year -= 1
-        } else {
-            month -= 1
-        }
-        updateDataAndView()
-    }
-    
-    func updateDataAndView() {
-        currentMonthName = Months[month]
-        NavBar.prompt = "\(currentMonthName) \(year)"
-        updateDaysInFeb()
-    }
-    
-    func updateDaysInFeb() {
-        if (year % 4 == 0 && year % 100 != 0) || year % 400 == 0 {
-            DaysInMonths[1] = 29
-        } else {
-            DaysInMonths[1] = 28
-        }
     }
     
     func goToDate() {
@@ -159,24 +122,13 @@ class MainViewController: UIViewController, UIScrollViewDelegate {
         return Calendar.current
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let top: CGFloat = 0
-        let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
-        let buffer: CGFloat = self.cellBuffer * self.cellHeight
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let frame: CGFloat = scrollView.frame.size.height
         let scrollPosition = scrollView.contentOffset.y
         
-        // Reached the bottom of the list
-        if scrollPosition > bottom - buffer {
-            // Add more dates to the bottom
-            let lastDate = self.days.last!
-            let additionalDays = self.generateDays(
-                lastDate.dateFromDays(1),
-                endDate: lastDate.dateFromDays(self.daysToAdd)
-            )
-            self.days.append(contentsOf: additionalDays)
-            
-            // Update the tableView
-            self.tableView.reloadData()
+        if scrollPosition > totalMonthsHeight - frame * 10 {
+            let nextMonth = createMonth(months.count - 1, totalMonthsHeight + spacing)
+            self.appendMonthToList(month: nextMonth)
         }
     }
 }

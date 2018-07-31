@@ -3,10 +3,70 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "EventViewController.fillScrollView():EventViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "EventListItem.instanceFromNib()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.getMonthHeigth(by:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "range.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MonthView.getStartDateDayPosition():MonthView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "date">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UIView.loadNib():NibView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "picker">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventListItem.viewDidLoad():EventListItem.swift">
+      </ContextState>
+      <ContextState
          contextName = "EventViewController.viewDidLoad():EventViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "SQLiteStorage.remove(event:):SQLiteStorage.swift">
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "weekday">
+            </PersistentString>
+            <PersistentString
+               value = "calendar.">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MonthView.collectionView(_:cellForItemAt:):MonthView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MonthView.date.didset:MonthView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static EventListItem.loadFromNib():EventListItem.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "nib.instantiate(withOwner: self, options: nil)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ViewController.collectionView(_:cellForItemAt:):ViewController.swift">
@@ -29,22 +89,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "static UIView.loadFromNib&lt;A&gt;():NibView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "type(of: self)">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MonthView.getStartDateDayPosition():MonthView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "date">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
          <PersistentStrings>
             <PersistentString
@@ -52,20 +96,6 @@
             </PersistentString>
             <PersistentString
                value = "String(cString: sqlite3_column_text(statement, 1))">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.Next(_:):ViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.Back(_:):ViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "UIView.loadNib():NibView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "picker">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -78,39 +108,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MainViewController.getMonthHeigth(by:):MainViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "range.count">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "CollectionViewCell.date.didset:CollectionViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "EventListItem.viewDidLoad():EventListItem.swift">
+         contextName = "CollectionViewCell.awakeFromNib():CollectionViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "MainViewController.scrollViewDidScroll(_:):MainViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "totalMonthsHeight">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "EventViewController.fillScrollView():EventViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "EventListItem.instanceFromNib()">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "static EventListItem.loadFromNib():EventListItem.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "nib.instantiate(withOwner: self, options: nil)">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "ViewController.Back(_:):ViewController.swift">
       </ContextState>
       <ContextState
          contextName = "NextViewController.viewDidLoad():NextViewController.swift">
@@ -121,18 +125,45 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
+         contextName = "MainViewController.collectionView(_:cellForItemAt:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "weekday">
+               value = "components.month">
             </PersistentString>
             <PersistentString
-               value = "calendar.">
+               value = "(MainViewController.halfMonths - indexPath.row)">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         contextName = "MainViewController.viewDidLoad():MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath.row">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SQLiteStorage.remove(event:):SQLiteStorage.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.scrollViewDidScroll(_:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "totalMonthsHeight">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.Next(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static UIView.loadFromNib&lt;A&gt;():NibView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "type(of: self)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

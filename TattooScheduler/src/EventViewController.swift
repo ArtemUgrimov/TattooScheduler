@@ -26,9 +26,11 @@ class EventViewController: UIViewController {
             titleBar.title = vc!.selectedDate
         }
         
-        dateFormatter.dateFormat = "dd MM yyyy"
+        dateFormatter.dateFormat = "dd MMMM yyyy"
         timeFormatter.dateFormat = "HH:mm"
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         fillScrollView()
     }
     
@@ -37,7 +39,7 @@ class EventViewController: UIViewController {
     }
     
     private func remove(listItem li: UIView) {
-        scrollView.addSubview(li)
+        li.removeFromSuperview()
     }
     
     func fillScrollView() {
@@ -47,7 +49,7 @@ class EventViewController: UIViewController {
         
         var events = vc?.storage.getEvents(for: dateFormatter.date(from: vc!.selectedDate)!)
         events = events?.sorted(by: { $0.date! < $1.date! })
-        var offset = (x: 8, y: 8, width: Int(scrollView.bounds.width - 16), height: 140)
+        var offset = (x: 0, y: 8, width: Int(scrollView.frame.width), height: 140)
         let spacing = 8
         
         for event in events! {

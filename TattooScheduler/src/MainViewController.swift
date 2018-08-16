@@ -13,6 +13,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     static let totalMonths: Int = 3000
     static let offsetMonths: Int = 500
+    static var screenWidth: CGFloat = 0
     
     @IBOutlet weak var NavBar: UINavigationItem!
     @IBOutlet weak var WeekdayStackView: UIStackView!
@@ -20,27 +21,53 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     let date = Date()
     var selectedDate: String = String()
+    var selectedCell: CollectionViewCell?
     
     var months: [MonthView] = []
     var storage:Storage = SQLiteStorage()
     
+    var year: Int = 0
+    var month: Int = 0
+    var day: Int = 0
+    
+    var eventsCache: [String:[CalendarEvent]] = [:]
+    
+    var once: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let day = self.calendar.component(.day, from: date)
-        let month = self.calendar.component(.month, from: date) - 1
-        let year = self.calendar.component(.year, from: date)
+        day = self.calendar.component(.day, from: date)
+        month = self.calendar.component(.month, from: date)
+        year = self.calendar.component(.year, from: date)
         
         NavBar.prompt = "\(year)"
-        NavBar.title = "\(day) \(calendar.monthSymbols[month])"
+        NavBar.title = "\(day) \(calendar.monthSymbols[month - 1])"
         
         for (index, label) in WeekdayStackView.arrangedSubviews.enumerated() {
             (label as! UILabel).text = calendar.shortWeekdaySymbols[(index + 1) % 7]
         }
+        
+        let events = (storage as! SQLiteStorage).events
+        for event in events {
+            let year = calendar.component(.year, from: event.date!)
+            let month = calendar.component(.month, from: event.date!)
+            let day = calendar.component(.day, from: event.date!)
+            
+            let ms = "\(year)_\(month)_\(day)"
+            if eventsCache[ms] == nil {
+               eventsCache[ms] = []
+            }
+            eventsCache[ms]?.append(event)
+        }
     }
     
     override func viewDidLayoutSubviews() {
-        monthsCollectionView.scrollToItem(at: IndexPath(row: MainViewController.offsetMonths, section: 0), at: .top, animated: false)
+        if once {
+            monthsCollectionView.scrollToItem(at: IndexPath(row: MainViewController.offsetMonths, section: 0), at: .top, animated: false)
+            once = false
+            MainViewController.screenWidth = view.width
+        }
     }
     
     func goTo(date: Date) {
@@ -62,22 +89,29 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3000
+        return MainViewController.totalMonths
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //print("Updating month!")
+        
         let monthView = collectionView.dequeueReusableCell(withReuseIdentifier: "MonthView", for: indexPath) as! MonthView
         monthView.vc = self
         
         let currentYear = self.calendar.component(.year, from: date)
         let currentMonth = self.calendar.component(.month, from: date)
-        
         let month = currentMonth - (MainViewController.offsetMonths - indexPath.row)
         
         let components = DateComponents(year: currentYear, month: month, day: 1)
         let nextDate = calendar.date(from: components)
 
         monthView.date = nextDate!
+        
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        monthView.monthLabel.text! = "\(formatter.string(from: nextDate!))"
+        
+        monthView.updateDates()
         
         return monthView
     }

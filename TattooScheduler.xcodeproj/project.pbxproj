@@ -12,6 +12,7 @@
 		AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAED20F55134000A13F5 /* Storage.swift */; };
 		AC0CBAF020F55278000A13F5 /* SQLiteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAEF20F55278000A13F5 /* SQLiteStorage.swift */; };
 		AC0CBAF220F552E3000A13F5 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CBAF120F552E3000A13F5 /* CalendarEvent.swift */; };
+		AC0EE1122125D53900F91E62 /* EventEditViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */; };
 		AC1FDDFF210E09A8007D4915 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */; };
 		AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C8B04210C8DC600E1D487 /* EventListItem.swift */; };
 		AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2C8B08210D980F00E1D487 /* EventListItem.xib */; };
@@ -31,6 +32,7 @@
 		AC0CBAED20F55134000A13F5 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		AC0CBAEF20F55278000A13F5 /* SQLiteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteStorage.swift; sourceTree = "<group>"; };
 		AC0CBAF120F552E3000A13F5 /* CalendarEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewControllerExtensions.swift; sourceTree = "<group>"; };
 		AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		AC2C8B04210C8DC600E1D487 /* EventListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListItem.swift; sourceTree = "<group>"; };
 		AC2C8B08210D980F00E1D487 /* EventListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListItem.xib; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 		ACD08272210E69450040095D /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */,
 				ACD08273210E698D0040095D /* Extensions.swift */,
 			);
 			path = utils;
@@ -207,6 +210,7 @@
 				AC0CBAE920F53B7A000A13F5 /* EventViewController.swift in Sources */,
 				AC9F69A2210DDD1900FEA704 /* Indicator.swift in Sources */,
 				AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */,
+				AC0EE1122125D53900F91E62 /* EventEditViewControllerExtensions.swift in Sources */,
 				AC0CBAEE20F55134000A13F5 /* Storage.swift in Sources */,
 				ACD08274210E698D0040095D /* Extensions.swift in Sources */,
 				AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */,

@@ -13,6 +13,7 @@ class SQLiteStorage: Storage {
 
     var db: OpaquePointer?
     let dateFormatter = DateFormatter()
+    let fileURL: URL
     
     var events:[CalendarEvent] = []
     
@@ -24,7 +25,7 @@ class SQLiteStorage: Storage {
         dateFormatter.locale = Calendar.current.locale
         dateFormatter.setLocalizedDateFormatFromTemplate("yyyy-MM-dd HH:mm:ss")
         
-        let fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        fileURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
             .appendingPathComponent("test.sqlite")
         
         let fileManager = FileManager()
@@ -41,18 +42,24 @@ class SQLiteStorage: Storage {
             print("error creating table: \(errmsg)")
         }
         
-        self.loadEvents()
-    }
-    
-    deinit {
         if sqlite3_close(db) != SQLITE_OK {
             print("error closing database")
         }
         
         db = nil
+        
+        self.loadEvents()
+    }
+    
+    deinit {
+
     }
     
     func loadEvents() {
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
         var statement: OpaquePointer?
         
         if sqlite3_prepare_v2(db, "select id, data from events", -1, &statement, nil) != SQLITE_OK {
@@ -86,9 +93,17 @@ class SQLiteStorage: Storage {
         }
         
         statement = nil
+        
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
     }
     
     func store(event ev: CalendarEvent) {
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
         var statement: OpaquePointer?
         if sqlite3_prepare_v2(db, "insert into events (date, data) values (?, ?)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -118,18 +133,26 @@ class SQLiteStorage: Storage {
             print("INSERT OK!")
         }
         
-        ev.id = Int(sqlite3_last_insert_rowid(statement))
-        events.append(ev)
-        
         if sqlite3_finalize(statement) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
             print("error finalizing prepared statement: \(errmsg)")
         }
         
+        ev.id = getLastId()//Int(sqlite3_last_insert_rowid(statement))
+        events.append(ev)
+        
         statement = nil
+        
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
     }
     
     func update(event ev: CalendarEvent) {
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
         var statement: OpaquePointer?
         if sqlite3_prepare_v2(db, "update events set date=(?), data=(?) where id=(?)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -172,9 +195,38 @@ class SQLiteStorage: Storage {
         }
         
         statement = nil
+        
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
+    }
+    
+    func getLastId() -> Int {
+        var id: Int = 0
+        var statement: OpaquePointer?
+        
+        if sqlite3_prepare_v2(db, "select max(id) from events", -1, &statement, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing select: \(errmsg)")
+        }
+        
+        if sqlite3_step(statement) == SQLITE_ROW {
+            id = (Int)(sqlite3_column_int64(statement, 0))
+            print("id = \(id); ", terminator: "")
+        }
+        
+        if sqlite3_finalize(statement) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("error finalizing prepared statement: \(errmsg)")
+        }
+        return id;
     }
     
     func remove(event ev: CalendarEvent) {
+        if sqlite3_open(fileURL.path, &db) != SQLITE_OK {
+            print("error opening database")
+        }
+        
         var statement: OpaquePointer?
         if sqlite3_prepare_v2(db, "delete from events where id=(?)", -1, &statement, nil) != SQLITE_OK {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -201,6 +253,10 @@ class SQLiteStorage: Storage {
         }
         
         statement = nil
+        
+        if sqlite3_close(db) != SQLITE_OK {
+            print("error closing database")
+        }
     }
     
     public func getEvents(for date: Date)->[CalendarEvent] {

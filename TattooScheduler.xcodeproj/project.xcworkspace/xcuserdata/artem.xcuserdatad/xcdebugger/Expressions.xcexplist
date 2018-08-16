@@ -3,12 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "EventViewController.fillScrollView():EventViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "EventListItem.instanceFromNib()">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
       </ContextState>
       <ContextState
          contextName = "MainViewController.getMonthHeigth(by:):MainViewController.swift">
@@ -38,19 +33,30 @@
          contextName = "EventListItem.viewDidLoad():EventListItem.swift">
       </ContextState>
       <ContextState
-         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
+         contextName = "EventEditViewController.fillFromEvent():EventEditViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "editingEvent?.properties.additional">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ViewController.viewDidLoad():ViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
+         contextName = "ViewController.Next(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EventEditViewController.imagePickerController(_:didFinishPickingMediaWithInfo:):EventEditViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "weekday">
+               value = "info[UIImagePickerControllerReferenceURL] as? URL">
             </PersistentString>
             <PersistentString
-               value = "calendar.">
+               value = "image.path">
+            </PersistentString>
+            <PersistentString
+               value = "info[UIImagePickerControllerImageURL] as? URL">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -58,7 +64,31 @@
          contextName = "MonthView.collectionView(_:cellForItemAt:):MonthView.swift">
       </ContextState>
       <ContextState
+         contextName = "static UIView.loadFromNib&lt;A&gt;():NibView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "type(of: self)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventEditViewController.saveEvent(_:):EventEditViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "imageView.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MonthView.date.didset:MonthView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "EventEditViewController.callANumber(_:):EventEditViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "URL(string: &quot;tel://1234567&quot;)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "static EventListItem.loadFromNib():EventListItem.swift">
@@ -89,6 +119,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CollectionViewCell.date.didset:CollectionViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "SQLiteStorage.getEvents(for:):SQLiteStorage.swift">
          <PersistentStrings>
             <PersistentString
@@ -108,13 +141,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CollectionViewCell.date.didset:CollectionViewCell.swift">
+         contextName = "SQLiteStorage.store(event:):SQLiteStorage.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CollectionViewCell.updateIndicator():CollectionViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "CollectionViewCell.awakeFromNib():CollectionViewCell.swift">
       </ContextState>
       <ContextState
          contextName = "ViewController.Back(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UITextField.doneButtonAction():Extensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.superview?.inputViewController">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "NextViewController.viewDidLoad():NextViewController.swift">
@@ -147,21 +191,29 @@
          contextName = "SQLiteStorage.remove(event:):SQLiteStorage.swift">
       </ContextState>
       <ContextState
-         contextName = "MainViewController.scrollViewDidScroll(_:):MainViewController.swift">
+         contextName = "EventViewController.fillScrollView():EventViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "totalMonthsHeight">
+               value = "EventListItem.instanceFromNib()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.Next(_:):ViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "static UIView.loadFromNib&lt;A&gt;():NibView.swift">
+         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "type(of: self)">
+               value = "weekday">
+            </PersistentString>
+            <PersistentString
+               value = "calendar.">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MainViewController.scrollViewDidScroll(_:):MainViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "totalMonthsHeight">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

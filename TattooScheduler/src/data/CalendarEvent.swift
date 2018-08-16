@@ -15,11 +15,12 @@ class CalendarEvent: Codable {
     struct Properties: Codable {
         var eventType: String = String()
         var description: String = String()
-        var additional: [[String:String]]?
+        var additional: [String:String] = [:]
     }
     
     public var properties: Properties = Properties()
     
     init() {
+        properties.additional = [:]
     }
 }

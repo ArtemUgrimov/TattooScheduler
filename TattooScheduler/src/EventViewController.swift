@@ -28,14 +28,20 @@ class EventViewController: UIViewController {
         
         dateFormatter.dateFormat = "dd MMMM yyyy"
         timeFormatter.dateFormat = "HH:mm"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         fillScrollView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     private func add(listItem li: UIView) {
-        scrollView.addSubview(li)
+        li.alpha = 0
+        self.scrollView.addSubview(li)
+
+        UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveLinear, animations: {
+            li.alpha = 1
+        }, completion: nil)
     }
     
     private func remove(listItem li: UIView) {
@@ -49,7 +55,7 @@ class EventViewController: UIViewController {
         
         var events = vc?.storage.getEvents(for: dateFormatter.date(from: vc!.selectedDate)!)
         events = events?.sorted(by: { $0.date! < $1.date! })
-        var offset = (x: 0, y: 8, width: Int(scrollView.frame.width), height: 140)
+        var offset = (x: 0, y: 8, width: Int(MainViewController.screenWidth * 0.91), height: 140)
         let spacing = 8
         
         for event in events! {
@@ -60,6 +66,7 @@ class EventViewController: UIViewController {
             offset.y += offset.height + spacing
         }
         scrollView.contentSize = CGSize(width: offset.width, height: offset.y)
+        vc?.selectedCell?.updateIndicator()
     }
     
     private func createListItem(_ offset: (Int, Int, Int, Int)) -> EventListItem {

@@ -13,7 +13,7 @@ enum OpenMode {
     case Edit
 }
 
-class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate, UITextFieldDelegate {
+class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
     enum EventType: String {
         case Tattoo
@@ -28,10 +28,10 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var eventTypeTextField: UITextField!
     @IBOutlet weak var eventTimeTextField: UITextField!
-    //@IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var phoneTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var openMode: OpenMode = OpenMode.Add
@@ -47,13 +47,25 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     let saveDateFormatter = DateFormatter()
     
     var currentVC: UIViewController?
-    var activeField: UITextField?
-    
-    var imgPath: String = "file:///private/var/mobile/Containers/Data/Application/205C7DCA-F23C-4A8E-BAAA-EF0BC5A2EEB3/tmp/2BA6593B-BD65-4D58-833D-DF354EFFA3B9.png"
+    var activeField: UITextView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EventEditViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+        
+        setupDateFormatters()
+        setupTextFields()
+        fillFromEvent()
+        registerForKeyboardNotifications()
+    }
+    
+    deinit {
+        deregisterFromKeyboardNotifications()
+    }
+    
+    func setupTextFields() {
         eventTimePicker = UIDatePicker()
         eventTimePicker?.datePickerMode = .time
         eventTimePicker?.locale = Locale(identifier: "uk")
@@ -71,30 +83,15 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         eventTimeTextField.addDoneButtonOnKeyboard(controller: self)
         descriptionTextField.addDoneButtonOnKeyboard(controller: self)
         phoneTextField.addDoneButtonOnKeyboard(controller: self)
+        priceTextField.addDoneButtonOnKeyboard(controller: self)
         
+        descriptionTextField.delegate = self
+    }
+    
+    func setupDateFormatters() {
         timeFormatter.dateFormat = "HH:mm"
         saveDateFormatter.dateFormat = "dd MM yyyy HH:mm"
         saveDateFormatter.locale = Calendar.current.locale
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EventEditViewController.viewTapped(gestureRecognizer:)))
-        view.addGestureRecognizer(tapGesture)
-        
-        let imageUrl: URL = URL(fileURLWithPath: imgPath)
-        if FileManager.default.fileExists(atPath: imgPath),
-            let imageData: Data = try? Data(contentsOf: imageUrl),
-            let image = UIImage(data: imageData, scale: UIScreen.main.scale) {
-                imageView.image = image
-        } else {
-            print("No image(((((((")
-        }
-        
-        fillFromEvent()
-        
-        registerForKeyboardNotifications()
-    }
-    
-    deinit {
-        deregisterFromKeyboardNotifications()
     }
     
     @IBAction func saveEvent(_ sender: Any) {
@@ -114,6 +111,7 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         event!.properties.eventType = eventTypeTextField.text!
         event!.properties.description = descriptionTextField.text!
         event!.properties.additional["Phone"] = phoneTextField.text!
+        event!.properties.additional["Price"] = priceTextField.text!
         
         let year = Calendar.current.component(.year, from: (event?.date)!)
         let month = Calendar.current.component(.month, from: (event?.date)!)
@@ -157,6 +155,10 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         if phoneTextField.isEditing {
             view.endEditing(true)
         }
+        
+        if priceTextField.isEditing {
+            view.endEditing(true)
+        }
     }
     
     @IBAction func imageTapped(_ sender: Any) {
@@ -169,6 +171,25 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func deleteEvent(_ sender: Any) {
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            self.deleteLogic()
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func deleteLogic() {
         if editingEvent != nil {
             let year = Calendar.current.component(.year, from: (editingEvent?.date)!)
             let month = Calendar.current.component(.month, from: (editingEvent?.date)!)
@@ -189,6 +210,7 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             eventTimeTextField.text = timeFormatter.string(from: (editingEvent?.date)!)
             descriptionTextField.text = editingEvent?.properties.description
             phoneTextField.text = editingEvent?.properties.additional["Phone"]
+            priceTextField.text = editingEvent?.properties.additional["Price"]
         }
     }
     

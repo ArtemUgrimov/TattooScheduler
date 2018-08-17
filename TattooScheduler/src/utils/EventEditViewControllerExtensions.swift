@@ -23,14 +23,6 @@ extension EventEditViewController {
         }
         currentVC!.dismiss(animated: true, completion: nil)
     }
-    
-    public func textViewDidBeginEditing(_ textView: UITextView) {
-        textView.isEditing = true
-    }
-    
-    public func textViewDidEndEditing(_ textView: UITextView) {
-        textView.isEditing = false
-    }
 }
 
 //gallery and camera
@@ -80,7 +72,7 @@ extension EventEditViewController {
 extension EventEditViewController {
     func registerForKeyboardNotifications(){
         //Adding notifies on keyboard appearing
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
@@ -91,40 +83,33 @@ extension EventEditViewController {
     }
     
     @objc func keyboardWasShown(notification: NSNotification){
-        //Need to calculate keyboard exact size due to Apple suggestions
-        self.scrollView.isScrollEnabled = true
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
-        
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        
-        var aRect : CGRect = self.view.frame
-        aRect.size.height -= keyboardSize!.height
-        if let activeField = self.activeField {
-            if (!aRect.contains(activeField.frame.origin)){
-                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
-            }
+        if let field = activeField, let info = notification.userInfo, let keyboardFrameEndUserInfoKey = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            var keyboardRect = keyboardFrameEndUserInfoKey.cgRectValue
+            keyboardRect = self.view.convert(keyboardRect, from: nil)
+            let keyboardTop = keyboardRect.origin.y
+            var newScrollFrame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: keyboardTop)
+            newScrollFrame.size.height = keyboardTop - self.view.bounds.origin.y
+            print(keyboardTop)
+            self.scrollView.frame = newScrollFrame
+            
+            let fieldRect = self.view.convert(field.frame, from: field.superview)
+            self.scrollView.scrollRectToVisible(fieldRect, animated: true)
         }
     }
     
     @objc func keyboardWillBeHidden(notification: NSNotification){
-        //Once keyboard disappears, restore original positions
-        var info = notification.userInfo!
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        self.scrollView.contentInset = contentInsets
-        self.scrollView.scrollIndicatorInsets = contentInsets
-        self.view.endEditing(true)
-        self.scrollView.isScrollEnabled = false
+        let topFrame = CGRect(x: 0, y: 0, width: 1, height: 1)
+        self.scrollView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        self.scrollView.scrollRectToVisible(topFrame, animated: true)
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField){
-        activeField = textField
+    public func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.isEditing = true
+        activeField = textView
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField){
+    public func textViewDidEndEditing(_ textView: UITextView) {
+        textView.isEditing = false
         activeField = nil
     }
 }

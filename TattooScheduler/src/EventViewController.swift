@@ -31,10 +31,6 @@ class EventViewController: UIViewController {
         fillScrollView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    
     private func add(listItem li: UIView) {
         li.alpha = 0
         self.scrollView.addSubview(li)

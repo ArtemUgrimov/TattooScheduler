@@ -8,7 +8,8 @@
 
 import UIKit
 
-@IBDesignable class EventListItem: UIView {
+@IBDesignable
+class EventListItem: UITableViewCell {
     
     @IBOutlet weak var eventTypeLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
@@ -22,12 +23,6 @@ import UIKit
     var desc: String = String()
     
     var view: UIView!
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        // Setup view from .xib file
-        xibSetup()
-    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -85,5 +80,11 @@ import UIKit
         let nib = UINib(nibName: "EventListItem", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
         return view
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        xibSetup()
+        view?.prepareForInterfaceBuilder()
     }
 }

@@ -219,22 +219,27 @@
         <!--EventList-->
         <scene sceneID="pzt-UJ-bir">
             <objects>
-                <viewController storyboardIdentifier="EventViewController" id="9SC-4q-Jha" customClass="EventViewController" customModule="TattooScheduler" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventViewController" id="9SC-4q-Jha" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAX-qG-xGC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nt6-1b-Qay">
-                                <rect key="frame" x="16" y="20" width="382" height="696"/>
-                            </scrollView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-H7-i6l">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9SC-4q-Jha" id="vuI-Qp-e0D"/>
+                                    <outlet property="delegate" destination="9SC-4q-Jha" id="Z3D-de-6hq"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Nt6-1b-Qay" firstAttribute="leading" secondItem="A0F-1I-3Zk" secondAttribute="leading" constant="16" id="Avk-c7-yyK"/>
-                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="trailing" secondItem="Nt6-1b-Qay" secondAttribute="trailing" constant="16" id="LVn-Yw-x9a"/>
-                            <constraint firstItem="Nt6-1b-Qay" firstAttribute="top" secondItem="A0F-1I-3Zk" secondAttribute="top" id="QkP-wA-ocL"/>
-                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="bottom" secondItem="Nt6-1b-Qay" secondAttribute="bottom" constant="20" id="xY4-eF-xmP"/>
+                            <constraint firstItem="Pga-H7-i6l" firstAttribute="top" secondItem="A0F-1I-3Zk" secondAttribute="top" id="IRm-gY-Aha"/>
+                            <constraint firstItem="Pga-H7-i6l" firstAttribute="leading" secondItem="A0F-1I-3Zk" secondAttribute="leading" id="gsb-gN-pxv"/>
+                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="bottom" secondItem="Pga-H7-i6l" secondAttribute="bottom" id="tQT-bF-hub"/>
+                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="trailing" secondItem="Pga-H7-i6l" secondAttribute="trailing" id="xcT-L5-czb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A0F-1I-3Zk"/>
                     </view>
@@ -247,13 +252,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="scrollView" destination="Nt6-1b-Qay" id="9rq-Z7-cVU"/>
                         <outlet property="titleBar" destination="piG-Hs-t2b" id="gev-cb-Jgi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRN-xc-GIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901.5999999999999" y="115.59220389805098"/>
+            <point key="canvasLocation" x="1901.449275362319" y="114.94565217391305"/>
         </scene>
         <!--Event Edit View Controller-->
         <scene sceneID="SC1-Ko-Mqv">

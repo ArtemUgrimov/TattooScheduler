@@ -219,29 +219,97 @@
         <!--EventList-->
         <scene sceneID="pzt-UJ-bir">
             <objects>
-                <viewController storyboardIdentifier="EventViewController" id="9SC-4q-Jha" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventViewController" id="9SC-4q-Jha" customClass="EventViewController" customModule="TattooScheduler" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bAX-qG-xGC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-H7-i6l">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="127" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Pga-H7-i6l">
+                                <rect key="frame" x="8" y="28" width="398" height="700"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EventListItem" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="EventListItem" rowHeight="127" id="4OL-OZ-ihj" customClass="EventListItem" customModule="TattooScheduler" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="398" height="127"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4OL-OZ-ihj" id="UfZ-gU-iaQ" userLabel="ContentView">
+                                            <rect key="frame" x="0.0" y="0.0" width="398" height="127"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hRt-vM-2ga">
+                                                    <rect key="frame" x="20" y="10" width="123" height="94.333333333333329"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventType" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zK3-uj-rBB" userLabel="EventType">
+                                                            <rect key="frame" x="0.0" y="0.0" width="123" height="30"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EventTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V3u-sD-0cS" userLabel="EventTime">
+                                                            <rect key="frame" x="0.0" y="40" width="91.333333333333329" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmD-Gr-zDV" userLabel="Description">
+                                                            <rect key="frame" x="0.0" y="74" width="87.666666666666671" height="20.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.94507645587869538" green="0.89024389210119159" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="hRt-vM-2ga" firstAttribute="leading" secondItem="UfZ-gU-iaQ" secondAttribute="leading" constant="20" id="053-Mm-09K"/>
+                                                <constraint firstItem="hRt-vM-2ga" firstAttribute="top" secondItem="UfZ-gU-iaQ" secondAttribute="top" constant="10" id="Fm7-c7-qFT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.92890713993119323" green="0.93011148874356053" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outlet property="descLabel" destination="vmD-Gr-zDV" id="R8f-sC-XCU"/>
+                                            <outlet property="eventTimeLabel" destination="V3u-sD-0cS" id="4Dc-Hp-Sx5"/>
+                                            <outlet property="eventTypeLabel" destination="zK3-uj-rBB" id="JUq-rF-vKJ"/>
+                                            <outlet property="view" destination="UfZ-gU-iaQ" id="dn8-cF-uby"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="9SC-4q-Jha" id="vuI-Qp-e0D"/>
                                     <outlet property="delegate" destination="9SC-4q-Jha" id="Z3D-de-6hq"/>
                                 </connections>
                             </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H8O-2W-Rlq">
+                                <rect key="frame" x="87" y="304" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Fb0-Bq-FNx">
+                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fb0-Bq-FNx" id="Vjh-QX-8Z4">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Pga-H7-i6l" firstAttribute="top" secondItem="A0F-1I-3Zk" secondAttribute="top" id="IRm-gY-Aha"/>
-                            <constraint firstItem="Pga-H7-i6l" firstAttribute="leading" secondItem="A0F-1I-3Zk" secondAttribute="leading" id="gsb-gN-pxv"/>
-                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="bottom" secondItem="Pga-H7-i6l" secondAttribute="bottom" id="tQT-bF-hub"/>
-                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="trailing" secondItem="Pga-H7-i6l" secondAttribute="trailing" id="xcT-L5-czb"/>
+                            <constraint firstItem="Pga-H7-i6l" firstAttribute="top" secondItem="A0F-1I-3Zk" secondAttribute="top" constant="8" id="IRm-gY-Aha"/>
+                            <constraint firstItem="Pga-H7-i6l" firstAttribute="leading" secondItem="A0F-1I-3Zk" secondAttribute="leading" constant="8" id="gsb-gN-pxv"/>
+                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="bottom" secondItem="Pga-H7-i6l" secondAttribute="bottom" constant="8" id="tQT-bF-hub"/>
+                            <constraint firstItem="A0F-1I-3Zk" firstAttribute="trailing" secondItem="Pga-H7-i6l" secondAttribute="trailing" constant="8" id="xcT-L5-czb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="A0F-1I-3Zk"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="iPp-u6-8Hq" appends="YES" id="bT4-pR-WY4"/>
+                            <outletCollection property="gestureRecognizers" destination="dIK-fX-yWK" appends="YES" id="fB1-9P-0rz"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="EventList" id="piG-Hs-t2b">
                         <barButtonItem key="backBarButtonItem" title="Back" id="9gk-co-tAu"/>
@@ -252,10 +320,21 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="titleBar" destination="piG-Hs-t2b" id="gev-cb-Jgi"/>
+                        <outlet property="tableView" destination="Pga-H7-i6l" id="brH-yq-2lt"/>
+                        <outlet property="titleBar" destination="piG-Hs-t2b" id="b81-X6-PHQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRN-xc-GIT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="iPp-u6-8Hq">
+                    <connections>
+                        <action selector="swipeLeft:" destination="9SC-4q-Jha" id="0qJ-xu-EFg"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="dIK-fX-yWK">
+                    <connections>
+                        <action selector="swipeRight:" destination="9SC-4q-Jha" id="sNG-jN-XAe"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1901.449275362319" y="114.94565217391305"/>
         </scene>

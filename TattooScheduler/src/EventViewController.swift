@@ -13,11 +13,13 @@ class EventViewController: UIViewController {
     var vc: MainViewController? = nil
     
     @IBOutlet weak var titleBar: UINavigationItem!
+    @IBOutlet weak var tableView: UITableView!
     
     let timeFormatter = DateFormatter()
     let dateFormatter = DateFormatter()
     var controllers: [EventListItem] = []
     var events: [CalendarEvent] = []
+    var arrow: UIBezierPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,24 +38,8 @@ class EventViewController: UIViewController {
     }
     
     func fillScrollView() {
-//        for sub in scrollView.subviews {
-//            sub.removeFromSuperview()
-//        }
-//        
-//        var events = vc?.storage.getEvents(for: dateFormatter.date(from: vc!.selectedDate)!)
-//        events = events?.sorted(by: { $0.date! < $1.date! })
-//        var offset = (x: 0, y: 8, width: Int(MainViewController.screenWidth * 0.91), height: 140)
-//        let spacing = 8
-//        
-//        for event in events! {
-//            let listItem = createListItem(offset)
-//            initListItem(listItem, event)
-//            controllers.append(listItem)
-//            self.scrollView.addSubview(listItem)
-//            offset.y += offset.height + spacing
-//        }
-//        scrollView.contentSize = CGSize(width: offset.width, height: offset.y)
-//        vc?.selectedCell?.updateIndicator()
+        vc?.selectedCell?.updateIndicator()
+        tableView.reloadData()
     }
     
     func addEventToList() {
@@ -62,6 +48,28 @@ class EventViewController: UIViewController {
     
     func removeLastEvent() {
         fillScrollView()
+    }
+    
+    @IBAction func swipeRight(_ recognizer: UISwipeGestureRecognizer) {
+        addDays(count: -1)
+    }
+    
+    @IBAction func swipeLeft(_ recognizer: UISwipeGestureRecognizer) {
+        addDays(count: 1)
+    }
+    
+    func addDays(count : Int) {
+        var newDate = dateFormatter.date(from: vc!.selectedDate)!
+        newDate = Calendar.current.date(byAdding: .day, value: count, to: newDate)!
+        
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM yyyy"
+        vc!.selectedDate = formatter.string(from: newDate)
+        
+        UIView.transition(with: tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
+            self.tableView.reloadData()
+            self.titleBar.title = self.vc!.selectedDate
+        }, completion: nil)
     }
     
     @IBAction func AddEvent(_ sender: Any) {

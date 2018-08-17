@@ -14,6 +14,7 @@ class EventListItem: UITableViewCell {
     @IBOutlet weak var eventTypeLabel: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var view: UIView!
     
     var event: CalendarEvent?
     var controller: EventViewController?
@@ -22,31 +23,24 @@ class EventListItem: UITableViewCell {
     var eventTime: String = String()
     var desc: String = String()
     
-    var view: UIView!
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        // Setup view from .xib file
-        xibSetup()
-    }
-    
-    @IBAction func onTap(_ sender: Any) {
-        controller!.edit(event: event!)
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    func xibSetup() {
-        view = loadViewFromNib()
-        view.frame = bounds
-        view.autoresizingMask = UIViewAutoresizing(rawValue: UIViewAutoresizing.RawValue(UInt8(UIViewAutoresizing.flexibleWidth.rawValue) | UInt8(UIViewAutoresizing.flexibleHeight.rawValue)))
         
         view.layer.cornerRadius = 20
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+        self.addGestureRecognizer(gesture)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        addSubview(view)
+        let f = contentView.frame
+        let fr = UIEdgeInsetsInsetRect(f, UIEdgeInsetsMake(4, 0, 0, 0))
+        contentView.frame = fr
+    }
+    
+    @objc func onTap(_ sender: Any) {
+        controller!.edit(event: event!)
     }
     
     func updateText() {
@@ -73,18 +67,5 @@ class EventListItem: UITableViewCell {
         default:
             break
         }
-    }
-    
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "EventListItem", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil).first as! UIView
-        return view
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        xibSetup()
-        view?.prepareForInterfaceBuilder()
     }
 }

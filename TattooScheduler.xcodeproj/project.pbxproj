@@ -15,8 +15,8 @@
 		AC0EE1122125D53900F91E62 /* EventEditViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */; };
 		AC1FDDFF210E09A8007D4915 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */; };
 		AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C8B04210C8DC600E1D487 /* EventListItem.swift */; };
-		AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC2C8B08210D980F00E1D487 /* EventListItem.xib */; };
 		AC49FD7121273F5400C5CC25 /* EventsViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49FD7021273F5400C5CC25 /* EventsViewControllerExtensions.swift */; };
+		AC49FD7321276C3D00C5CC25 /* BezierArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49FD7221276C3D00C5CC25 /* BezierArrow.swift */; };
 		AC8ADEAB20EC06770007905D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAA20EC06770007905D /* AppDelegate.swift */; };
 		AC8ADEAD20EC06770007905D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8ADEAC20EC06770007905D /* MainViewController.swift */; };
 		AC8ADEB020EC06770007905D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8ADEAE20EC06770007905D /* Main.storyboard */; };
@@ -36,8 +36,8 @@
 		AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditViewControllerExtensions.swift; sourceTree = "<group>"; };
 		AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		AC2C8B04210C8DC600E1D487 /* EventListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListItem.swift; sourceTree = "<group>"; };
-		AC2C8B08210D980F00E1D487 /* EventListItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventListItem.xib; sourceTree = "<group>"; };
 		AC49FD7021273F5400C5CC25 /* EventsViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewControllerExtensions.swift; sourceTree = "<group>"; };
+		AC49FD7221276C3D00C5CC25 /* BezierArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierArrow.swift; sourceTree = "<group>"; };
 		AC8ADEA720EC06770007905D /* TattooScheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TattooScheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8ADEAA20EC06770007905D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC8ADEAC20EC06770007905D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -65,7 +65,6 @@
 			isa = PBXGroup;
 			children = (
 				AC2C8B04210C8DC600E1D487 /* EventListItem.swift */,
-				AC2C8B08210D980F00E1D487 /* EventListItem.xib */,
 				AC9F69A1210DDD1900FEA704 /* Indicator.swift */,
 				AC9F69A3210DF49C00FEA704 /* MonthView.swift */,
 				AC1FDDFD210E09A8007D4915 /* CollectionViewCell.swift */,
@@ -131,6 +130,7 @@
 				AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */,
 				ACD08273210E698D0040095D /* Extensions.swift */,
 				AC49FD7021273F5400C5CC25 /* EventsViewControllerExtensions.swift */,
+				AC49FD7221276C3D00C5CC25 /* BezierArrow.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -195,7 +195,6 @@
 			files = (
 				AC8ADEB520EC06780007905D /* LaunchScreen.storyboard in Resources */,
 				AC8ADEB220EC06780007905D /* Assets.xcassets in Resources */,
-				AC2C8B09210D980F00E1D487 /* EventListItem.xib in Resources */,
 				AC8ADEB020EC06770007905D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9F69A4210DF49C00FEA704 /* MonthView.swift in Sources */,
+				AC49FD7321276C3D00C5CC25 /* BezierArrow.swift in Sources */,
 				AC8ADEAD20EC06770007905D /* MainViewController.swift in Sources */,
 				AC1FDDFF210E09A8007D4915 /* CollectionViewCell.swift in Sources */,
 				AC0CBAE920F53B7A000A13F5 /* EventViewController.swift in Sources */,

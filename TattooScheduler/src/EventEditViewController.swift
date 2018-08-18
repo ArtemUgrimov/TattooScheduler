@@ -113,6 +113,11 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         event!.properties.additional["Phone"] = phoneTextField.text!
         event!.properties.additional["Price"] = priceTextField.text!
         
+        if let img = self.imageView.image {
+            let imageData = img.jpeg(.lowest)
+            event!.properties.additional["Image"] = imageData?.base64EncodedString()
+        }
+        
         let year = Calendar.current.component(.year, from: (event?.date)!)
         let month = Calendar.current.component(.month, from: (event?.date)!)
         let day = Calendar.current.component(.day, from: (event?.date)!)
@@ -171,21 +176,17 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     }
     
     @IBAction func deleteEvent(_ sender: Any) {
-        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete event?", preferredStyle: .alert)
         
-        // Create OK button with action handler
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             self.deleteLogic()
         })
         
-        // Create Cancel button with action handlder
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in }
         
-        //Add OK and Cancel button to dialog message
         dialogMessage.addAction(ok)
         dialogMessage.addAction(cancel)
         
-        // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
     }
     
@@ -211,6 +212,11 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
             descriptionTextField.text = editingEvent?.properties.description
             phoneTextField.text = editingEvent?.properties.additional["Phone"]
             priceTextField.text = editingEvent?.properties.additional["Price"]
+            
+            if editingEvent?.properties.additional.index(forKey: "Image") != nil {
+                imageView.image = UIImage(data: Data(base64Encoded: (editingEvent?.properties.additional["Image"])!)!)
+                scrollView.isScrollEnabled = true
+            }
         }
     }
     
@@ -232,8 +238,10 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     @IBAction func callANumber(_ sender: UIButton) {
         if let num:String = phoneTextField.text {
-            let url:URL = URL(string: "tel://" + num)!
-            UIApplication.shared.open(url)
+            if num != "" {
+                let url:URL = URL(string: "tel://" + num)!
+                UIApplication.shared.open(url)
+            }
         }
     }
 }

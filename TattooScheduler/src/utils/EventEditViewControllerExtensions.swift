@@ -18,6 +18,8 @@ extension EventEditViewController {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.imageView.image = image
+            
+            self.scrollView.isScrollEnabled = true;
         } else {
             print("Something went wrong")
         }
@@ -89,7 +91,6 @@ extension EventEditViewController {
             let keyboardTop = keyboardRect.origin.y
             var newScrollFrame = CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: keyboardTop)
             newScrollFrame.size.height = keyboardTop - self.view.bounds.origin.y
-            print(keyboardTop)
             self.scrollView.frame = newScrollFrame
             
             let fieldRect = self.view.convert(field.frame, from: field.superview)

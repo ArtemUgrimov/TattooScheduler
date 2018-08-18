@@ -66,10 +66,11 @@ class EventViewController: UIViewController {
         formatter.dateFormat = "dd MMMM yyyy"
         vc!.selectedDate = formatter.string(from: newDate)
         
-        UIView.transition(with: tableView, duration: 0.1, options: .transitionCrossDissolve, animations: {
-            self.tableView.reloadData()
-            self.titleBar.title = self.vc!.selectedDate
-        }, completion: nil)
+        self.tableView.slideInTo(direction: count, duration: 0.2)
+        self.tableView.reloadData()
+        
+        self.titleBar.titleView?.slideInTo(direction: count, duration: 0.2)
+        self.titleBar.title = self.vc!.selectedDate
     }
     
     @IBAction func AddEvent(_ sender: Any) {

@@ -17,6 +17,26 @@ extension UIView {
     var height: CGFloat {
         return self.frame.height
     }
+    
+    func slideInTo(direction: Int = 1, duration: TimeInterval = 1.0, completionDelegate: AnyObject? = nil) {
+        // Create a CATransition animation
+        let slideInFromLeftTransition = CATransition()
+        
+        // Set its callback delegate to the completionDelegate that was provided (if any)
+        if let delegate: AnyObject = completionDelegate {
+            slideInFromLeftTransition.delegate = delegate as? CAAnimationDelegate
+        }
+        
+        // Customize the animation's properties
+        slideInFromLeftTransition.type = kCATransitionPush
+        slideInFromLeftTransition.subtype = direction < 0 ? kCATransitionFromLeft : kCATransitionFromRight
+        slideInFromLeftTransition.duration = duration
+        slideInFromLeftTransition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        slideInFromLeftTransition.fillMode = kCAFillModeRemoved
+        
+        // Add the animation to the View's layer
+        self.layer.add(slideInFromLeftTransition, forKey: "slideInFromLeftTransition")
+    }
 }
 
 extension Date {
@@ -26,6 +46,20 @@ extension Date {
     
     init(milliseconds:Int) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds / 1000))
+    }
+}
+
+extension UIImage {
+    enum JPEGQuality: CGFloat {
+        case lowest  = 0
+        case low     = 0.25
+        case medium  = 0.5
+        case high    = 0.75
+        case highest = 1
+    }
+    
+    func jpeg(_ quality: JPEGQuality) -> Data? {
+        return UIImageJPEGRepresentation(self, quality.rawValue)
     }
 }
 

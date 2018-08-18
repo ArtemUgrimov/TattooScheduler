@@ -32,6 +32,17 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: collectionView.width / 7, height: collectionView.width / 6)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        collectionView.collectionViewLayout = layout
+    }
+    
     func getStartDateDayPosition() -> Int {
         return day == 1 ? 7 : day - 1
     }
@@ -65,6 +76,12 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
             cell.vc = vc
             cell.date = Calendar.current.date(byAdding: .day, value: day - 1, to: date)
             cell.isHidden = false
+        }
+        
+        if [5, 6, 12, 13, 19, 20, 26, 27, 33, 34, 40, 41].contains(indexPath.row) {
+            cell.dateLabel.textColor = #colorLiteral(red: 0.6606217617, green: 0.6606217617, blue: 0.6606217617, alpha: 1)
+        } else {
+            cell.dateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
         
         //cell.updateIndicator()

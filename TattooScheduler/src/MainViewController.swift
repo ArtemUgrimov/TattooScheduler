@@ -60,6 +60,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             eventsCache[ms]?.append(event)
         }
+        setupMonthView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,6 +69,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             once = false
             MainViewController.screenWidth = view.width
         }
+    }
+    
+    func setupMonthView() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+        layout.itemSize = CGSize(width: monthsCollectionView.width, height: monthsCollectionView.width * 1.2)
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+        monthsCollectionView.collectionViewLayout = layout
     }
     
     func goTo(date: Date) {

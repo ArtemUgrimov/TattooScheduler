@@ -22,6 +22,7 @@ class CollectionViewCell: UICollectionViewCell {
     var day: Int = 0
     
     @IBOutlet weak var indicator: Indicator!
+    @IBOutlet weak var todayIndicator: TodayIndicator!
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
@@ -44,13 +45,7 @@ class CollectionViewCell: UICollectionViewCell {
         } else {
             turnIndicator(withValue: false)
         }
-        if vc?.year == year && vc?.month == month && vc?.day == day {
-            self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            layer.cornerRadius = self.frame.width / 2
-        } else {
-            self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-            layer.cornerRadius = 0
-        }
+        todayIndicator?.isHidden = !(vc?.year == year && vc?.month == month && vc?.day == day)
     }
 
     func turnIndicator(withValue v: Bool) {

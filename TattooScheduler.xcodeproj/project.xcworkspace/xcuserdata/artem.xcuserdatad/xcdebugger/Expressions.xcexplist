@@ -166,6 +166,14 @@
          contextName = "EventViewController.viewDidLoad():EventViewController.swift">
       </ContextState>
       <ContextState
+         contextName = "EventViewController.tableView(_:numberOfRowsInSection:):EventsViewControllerExtensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "events">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MonthView.getStartDateDayPosition():MonthView.swift">
          <PersistentStrings>
             <PersistentString

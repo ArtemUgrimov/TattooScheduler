@@ -12,6 +12,7 @@ import UIKit
 extension EventViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         events = vc!.storage.getEvents(for: dateFormatter.date(from: vc!.selectedDate)!)
+        events.sort(by: {$0.date! < $1.date!})
         return events.count
     }
     

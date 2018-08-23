@@ -94,27 +94,32 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         saveDateFormatter.locale = Calendar.current.locale
     }
     
-    @IBAction func saveEvent(_ sender: Any) {
-        
+    func saveEventLogic(date :Date? = nil) {
         if (eventTypeTextField.text?.isEmpty)! || (eventTimeTextField.text?.isEmpty)! {
             return
         }
         
         let event: CalendarEvent?
-            
+        
         if openMode == OpenMode.Add {
             event = CalendarEvent()
         } else {
             event = editingEvent
         }
-        event!.date = saveDateFormatter.date(from: "\(titleBar.title!) \(eventTimeTextField.text!)")
+        
+        if date != nil {
+            event!.date = date
+        } else {
+            event!.date = saveDateFormatter.date(from: "\(titleBar.title!) \(eventTimeTextField.text!)")
+        }
         event!.properties.eventType = eventTypeTextField.text!
         event!.properties.description = descriptionTextField.text!
         event!.properties.additional["Phone"] = phoneTextField.text!
         event!.properties.additional["Price"] = priceTextField.text!
         
         if let img = self.imageView.image {
-            let imageData = img.jpeg(.lowest)
+            let scaled = img.getResized(CGSize(width: img.size.width * img.scale, height: img.size.height * img.scale))
+            let imageData = scaled.jpeg(.lowest)
             event!.properties.additional["Image"] = imageData?.base64EncodedString()
         }
         
@@ -123,14 +128,14 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         let day = Calendar.current.component(.day, from: (event?.date)!)
         
         let ms = "\(year)_\(month)_\(day)"
-
+        
         if openMode == OpenMode.Add {
             vc?.storage.store(event: event!)
         } else {
             vc?.storage.update(event: event!)
         }
         if vc?.eventsCache[ms] == nil {
-           vc?.eventsCache[ms] = []
+            vc?.eventsCache[ms] = []
         }
         vc?.eventsCache[ms]?.append(event!)
         
@@ -175,7 +180,11 @@ class EventEditViewController: UIViewController, UIPickerViewDataSource, UIPicke
         eventTimeTextField.text = timeFormatter.string(from: eventTimePicker.date)
     }
     
-    @IBAction func deleteEvent(_ sender: Any) {
+    @IBAction func showActions(_ sender: Any) {
+        showActions()
+    }
+    
+    func deleteEventLogic() {
         let dialogMessage = UIAlertController(title: "Confirm", message: "Are you sure you want to delete event?", preferredStyle: .alert)
         
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in

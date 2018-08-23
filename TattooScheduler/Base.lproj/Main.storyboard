@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -124,7 +123,7 @@
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zC-3u-tmR" customClass="Indicator" customModule="TattooScheduler" customModuleProvider="target">
                                                                         <rect key="frame" x="22" y="44" width="6" height="6"/>
-                                                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="6" id="RMd-sc-dvE"/>
                                                                             <constraint firstAttribute="height" constant="6" id="u7M-fF-6NZ"/>
@@ -321,7 +320,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="EventList" id="piG-Hs-t2b">
                         <barButtonItem key="backBarButtonItem" title="Back" id="9gk-co-tAu"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="E1p-Ca-YRa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="E1p-Ca-YRa">
                             <connections>
                                 <action selector="AddEvent:" destination="9SC-4q-Jha" id="iXJ-4S-Gnk"/>
                             </connections>
@@ -580,18 +579,11 @@
                         <viewLayoutGuide key="safeArea" id="dfA-Rn-7dL"/>
                     </view>
                     <navigationItem key="navigationItem" id="1IG-ef-bEY">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="save" id="LxC-LS-KeB">
-                                <connections>
-                                    <action selector="saveEvent:" destination="BIw-sF-GGz" id="Pwf-IW-TkW"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="trash" id="OOQ-Oy-Yf1">
-                                <connections>
-                                    <action selector="deleteEvent:" destination="BIw-sF-GGz" id="HSl-5b-m5N"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="cH8-mw-8QN">
+                            <connections>
+                                <action selector="showActions:" destination="BIw-sF-GGz" id="LKz-wU-fWn"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionTextField" destination="yio-Uf-USP" id="6Kk-3z-gjr"/>

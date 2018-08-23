@@ -26,6 +26,8 @@
 		AC9F69A2210DDD1900FEA704 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F69A1210DDD1900FEA704 /* Indicator.swift */; };
 		AC9F69A4210DF49C00FEA704 /* MonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9F69A3210DF49C00FEA704 /* MonthView.swift */; };
 		ACD08274210E698D0040095D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD08273210E698D0040095D /* Extensions.swift */; };
+		ACD8CDB5212A039900C6C8A9 /* EventEditActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8CDB4212A039900C6C8A9 /* EventEditActions.swift */; };
+		ACFA3192212F3905009DEEA4 /* ClosureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFA3191212F3905009DEEA4 /* ClosureSelector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		AC9F69A1210DDD1900FEA704 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		AC9F69A3210DF49C00FEA704 /* MonthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthView.swift; sourceTree = "<group>"; };
 		ACD08273210E698D0040095D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		ACD8CDB4212A039900C6C8A9 /* EventEditActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEditActions.swift; sourceTree = "<group>"; };
+		ACFA3191212F3905009DEEA4 /* ClosureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureSelector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +120,10 @@
 		AC8ADEBC20EC06870007905D /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ACD8CDB8212A054B00C6C8A9 /* EventEditViewController */,
+				ACD8CDB7212A053700C6C8A9 /* EventListViewController */,
+				ACD8CDB6212A052600C6C8A9 /* MainViewController */,
 				AC8ADEAA20EC06770007905D /* AppDelegate.swift */,
-				AC8ADEAC20EC06770007905D /* MainViewController.swift */,
-				AC0CBAE820F53B79000A13F5 /* EventViewController.swift */,
-				AC00766E20FB30E600603B0D /* EventEditViewController.swift */,
 				AC0CBAF320F55544000A13F5 /* data */,
 				AC00767020FBA00200603B0D /* views */,
 				ACD08272210E69450040095D /* utils */,
@@ -130,12 +134,38 @@
 		ACD08272210E69450040095D /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */,
 				ACD08273210E698D0040095D /* Extensions.swift */,
-				AC49FD7021273F5400C5CC25 /* EventsViewControllerExtensions.swift */,
 				AC49FD7221276C3D00C5CC25 /* BezierArrow.swift */,
+				ACFA3191212F3905009DEEA4 /* ClosureSelector.swift */,
 			);
 			path = utils;
+			sourceTree = "<group>";
+		};
+		ACD8CDB6212A052600C6C8A9 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC8ADEAC20EC06770007905D /* MainViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		ACD8CDB7212A053700C6C8A9 /* EventListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC0CBAE820F53B79000A13F5 /* EventViewController.swift */,
+				AC49FD7021273F5400C5CC25 /* EventsViewControllerExtensions.swift */,
+			);
+			path = EventListViewController;
+			sourceTree = "<group>";
+		};
+		ACD8CDB8212A054B00C6C8A9 /* EventEditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC00766E20FB30E600603B0D /* EventEditViewController.swift */,
+				AC0EE1112125D53900F91E62 /* EventEditViewControllerExtensions.swift */,
+				ACD8CDB4212A039900C6C8A9 /* EventEditActions.swift */,
+			);
+			path = EventEditViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC9F69A4210DF49C00FEA704 /* MonthView.swift in Sources */,
+				ACFA3192212F3905009DEEA4 /* ClosureSelector.swift in Sources */,
 				AC49FD7321276C3D00C5CC25 /* BezierArrow.swift in Sources */,
 				AC8ADEAD20EC06770007905D /* MainViewController.swift in Sources */,
 				AC1FDDFF210E09A8007D4915 /* CollectionViewCell.swift in Sources */,
@@ -221,6 +252,7 @@
 				ACD08274210E698D0040095D /* Extensions.swift in Sources */,
 				AC2C8B05210C8DC600E1D487 /* EventListItem.swift in Sources */,
 				AC0CBAF020F55278000A13F5 /* SQLiteStorage.swift in Sources */,
+				ACD8CDB5212A039900C6C8A9 /* EventEditActions.swift in Sources */,
 				AC49FD7121273F5400C5CC25 /* EventsViewControllerExtensions.swift in Sources */,
 				AC49FD7521279BE900C5CC25 /* TodayIndicator.swift in Sources */,
 				AC0CBAF220F552E3000A13F5 /* CalendarEvent.swift in Sources */,

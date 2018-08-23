@@ -10,9 +10,13 @@ import UIKit
 
 @IBDesignable class Indicator: UIView {
 
-    override func draw(_ rect: CGRect) {
-        let path = UIBezierPath(ovalIn: rect)
-        UIColor.red.setFill()
-        path.fill()
+    var color: UIColor = UIColor.red {
+        didSet {
+            backgroundColor = color
+        }
+    }
+    
+    override func awakeFromNib() {
+        layer.cornerRadius = layer.frame.width * 0.5
     }
 }

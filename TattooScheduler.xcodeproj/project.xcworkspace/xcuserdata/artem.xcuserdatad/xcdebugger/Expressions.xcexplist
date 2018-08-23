@@ -3,18 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ViewController.Back(_:):ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CollectionViewCell.updateIndicator():CollectionViewCell.swift">
+      </ContextState>
+      <ContextState
          contextName = "MainViewController.scrollViewDidScroll(_:):MainViewController.swift">
          <PersistentStrings>
             <PersistentString
                value = "totalMonthsHeight">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CollectionViewCell.updateIndicator():CollectionViewCell.swift">
-      </ContextState>
-      <ContextState
-         contextName = "ViewController.Back(_:):ViewController.swift">
       </ContextState>
       <ContextState
          contextName = "ViewController.getStartDateDayPosition():ViewController.swift">
@@ -105,18 +105,24 @@
                value = "info[UIImagePickerControllerReferenceURL] as? URL">
             </PersistentString>
             <PersistentString
-               value = "info[UIImagePickerControllerImageURL] as? URL">
-            </PersistentString>
-            <PersistentString
                value = "image.path">
             </PersistentString>
+            <PersistentString
+               value = "info[UIImagePickerControllerImageURL] as? URL">
+            </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
       </ContextState>
       <ContextState
          contextName = "EventEditViewController.saveEvent(_:):EventEditViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "imageView.image">
+               value = "img.jpeg(.lowest).base64EncodedString().count">
+            </PersistentString>
+            <PersistentString
+               value = "imageView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -144,13 +150,10 @@
          contextName = "CollectionViewCell.date.didset:CollectionViewCell.swift">
       </ContextState>
       <ContextState
-         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
+         contextName = "EventViewController.tableView(_:numberOfRowsInSection:):EventsViewControllerExtensions.swift">
          <PersistentStrings>
             <PersistentString
-               value = "weekday">
-            </PersistentString>
-            <PersistentString
-               value = "calendar.">
+               value = "events">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -163,13 +166,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "EventViewController.viewDidLoad():EventViewController.swift">
-      </ContextState>
-      <ContextState
-         contextName = "EventViewController.tableView(_:numberOfRowsInSection:):EventsViewControllerExtensions.swift">
+         contextName = "ViewController.GetStartDateDayPosition():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "events">
+               value = "weekday">
+            </PersistentString>
+            <PersistentString
+               value = "calendar.">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

@@ -72,9 +72,13 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func setupMonthView() {
+        var frame = monthsCollectionView.frame
+        frame.size.width = view.width
+        monthsCollectionView.frame = frame
+        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: monthsCollectionView.width, height: monthsCollectionView.width * 1.2)
+        layout.itemSize = CGSize(width: view.width, height: view.width * 1.2)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         monthsCollectionView.collectionViewLayout = layout

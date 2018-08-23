@@ -61,6 +61,25 @@ extension UIImage {
     func jpeg(_ quality: JPEGQuality) -> Data? {
         return UIImageJPEGRepresentation(self, quality.rawValue)
     }
+    
+    func getResized(_ targetSize: CGSize) -> UIImage {
+        let size = self.size
+        let wRatio = targetSize.width / size.width
+        let hRatio = targetSize.height / size.height
+        
+        var newSize: CGSize
+        if (wRatio > hRatio) {
+            newSize = CGSize(width: size.width * hRatio, height: size.height * hRatio)
+        } else {
+            newSize = CGSize(width: size.width * wRatio, height: size.height * wRatio)
+        }
+        let rect = CGRect(x:0 , y: 0, width: newSize.width, height: newSize.height)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1)
+        draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
 }
 
 extension UITextField {
@@ -144,5 +163,15 @@ extension UITextView {
     @objc func doneButtonAction()
     {
         vc.viewTappedLogic()
+    }
+}
+
+var handle: Int = 0
+
+extension UIDatePicker {
+    func addTarget(for controlEvents: UIControlEvents, withClosure closure : @escaping (UIDatePicker) -> Void) {
+        let closureSelector = ClosureSelector<UIDatePicker>(withClosure: closure)
+        objc_setAssociatedObject(self, &handle, closureSelector, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        self.addTarget(closureSelector, action: closureSelector.selector, for: controlEvents)
     }
 }

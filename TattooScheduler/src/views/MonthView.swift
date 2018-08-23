@@ -21,7 +21,6 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var view: UIView!
     var date: Date = Date() {
         didSet {
             //monthLabel.text = "\(Calendar.current.monthSymbols[month])"
@@ -83,8 +82,6 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
         } else {
             cell.dateLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }
-        
-        //cell.updateIndicator()
         
         return cell
     }

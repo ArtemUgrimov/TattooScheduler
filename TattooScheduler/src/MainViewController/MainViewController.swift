@@ -41,7 +41,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         month = self.calendar.component(.month, from: date)
         year = self.calendar.component(.year, from: date)
         
-        NavBar.prompt = "\(year)"
         NavBar.title = "\(day) \(calendar.monthSymbols[month - 1])"
         
         for (index, label) in WeekdayStackView.arrangedSubviews.enumerated() {
@@ -60,7 +59,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             eventsCache[ms]?.append(event)
         }
-        setupMonthView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("ShowProfile"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSettings), name: NSNotification.Name("ShowSettings"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,13 +73,11 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func setupMonthView() {
-        var frame = monthsCollectionView.frame
-        frame.size.width = view.width
-        monthsCollectionView.frame = frame
+        monthsCollectionView.frame.size.width = UIScreen.main.bounds.width
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: view.width, height: view.width * 1.2)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: view.width * 1.2)
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         monthsCollectionView.collectionViewLayout = layout
@@ -93,6 +92,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if let eventViewController = mainStoryboard.instantiateViewController(withIdentifier: "EventViewController") as? EventViewController {
             eventViewController.vc = self
             if let navigator = navigationController {
+                NotificationCenter.default.post(name: NSNotification.Name("EventOpened"), object: nil)
                 navigator.pushViewController(eventViewController, animated: true)
             }
         }
@@ -107,8 +107,6 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //print("Updating month!")
-        
         let monthView = collectionView.dequeueReusableCell(withReuseIdentifier: "MonthView", for: indexPath) as! MonthView
         monthView.vc = self
         

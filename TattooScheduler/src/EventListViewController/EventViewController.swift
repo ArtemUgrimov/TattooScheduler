@@ -33,21 +33,17 @@ class EventViewController: UIViewController {
         fillScrollView()
     }
     
-    private func remove(listItem li: UIView) {
-        li.removeFromSuperview()
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParentViewController {
+            NotificationCenter.default.post(name: NSNotification.Name("EventClosed"), object: nil)
+        }
     }
     
     func fillScrollView() {
         vc?.selectedCell?.updateIndicator()
         tableView.reloadData()
-    }
-    
-    func addEventToList() {
-        fillScrollView()
-    }
-    
-    func removeLastEvent() {
-        fillScrollView()
     }
     
     @IBAction func swipeRight(_ recognizer: UISwipeGestureRecognizer) {

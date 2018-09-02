@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     static let size: CGFloat = 359
     var vc: MainViewController?
     
@@ -23,7 +23,6 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
     
     var date: Date = Date() {
         didSet {
-            //monthLabel.text = "\(Calendar.current.monthSymbols[month])"
             year = Calendar.current.component(.year, from: date)
             month = Calendar.current.component(.month, from: date)
             day = Calendar.current.component(.weekday, from: date)
@@ -33,13 +32,13 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-        layout.itemSize = CGSize(width: collectionView.width / 7, height: collectionView.width / 6)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        collectionView.collectionViewLayout = layout
+        collectionView.frame.size.width = UIScreen.main.bounds.width
+//        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+//        layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+//        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 8, height: UIScreen.main.bounds.width / 6)
+//        layout.minimumInteritemSpacing = 0
+//        layout.minimumLineSpacing = 0
+//        collectionView.collectionViewLayout = layout
     }
     
     func getStartDateDayPosition() -> Int {
@@ -58,7 +57,6 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //print("____Updating cell!!!")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         
         let day = indexPath.row + 1 - freeCells
@@ -84,5 +82,9 @@ class MonthView: UICollectionViewCell, UICollectionViewDelegate, UICollectionVie
         }
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width / 7, height: UIScreen.main.bounds.width / 6)
     }
 }

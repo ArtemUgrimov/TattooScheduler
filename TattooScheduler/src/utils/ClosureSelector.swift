@@ -19,7 +19,6 @@ public class ClosureSelector<Parameter> {
         self.closure = closure
     }
     
-    // Unfortunately we need to cast to AnyObject here
     @objc func target( param : AnyObject) {
         closure(param as! Parameter)
     }

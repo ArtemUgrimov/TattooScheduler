@@ -44,23 +44,8 @@ class CollectionViewCell: UICollectionViewCell {
         let todayEvents = vc?.eventsCache[eventId]
         
         if todayEvents != nil && !(todayEvents?.isEmpty)! {
-            var color = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
             let eventCount = todayEvents!.count
-            switch (eventCount) {
-            case 1:
-                color = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-                break
-            case 2:
-                color = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-                break
-            case 3:
-                color = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
-                break
-            default:
-                break
-            }
-            
-            indicator.color = color
+            indicator.color = indicatorColors[eventCount, default: #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)]
             turnIndicator(withValue: true)
         } else {
             turnIndicator(withValue: false)
